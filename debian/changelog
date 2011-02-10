@@ -1,0 +1,5 @@
+libwnck3 (2.91.6-1) UNRELEASED; urgency=low
+
+  * Initial Release (based on libwnck package)
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Wed, 09 Feb 2011 15:59:22 +1100
