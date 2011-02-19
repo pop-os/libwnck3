@@ -7,7 +7,7 @@ Source: libwnck3
 Section: libs
 Priority: optional
 Maintainer: Josselin Mouette <joss@debian.org>
-Uploaders: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Uploaders: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>, Emilio Pozuelo Monfort <pochu@debian.org>, Sebastian Dröge <slomo@debian.org>
 Standards-Version: 3.9.1
 Build-Depends: debhelper (>= 5),
                cdbs (>= 0.4.90),
