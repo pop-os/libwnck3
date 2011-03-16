@@ -1,4 +1,4 @@
-libwnck3 (2.91.6-1) UNRELEASED; urgency=low
+libwnck3 (2.91.90-1) unstable; urgency=low
 
   [ Robert Ancell ]
   * Initial Release (based on libwnck package)
@@ -12,7 +12,13 @@ libwnck3 (2.91.6-1) UNRELEASED; urgency=low
     + Abort the build if the symbols file is outdated.
     + Make the shlibs file always depend on the latest upstream version.
 
- -- Robert Ancell <robert.ancell@canonical.com>  Wed, 09 Feb 2011 15:59:22 +1100
+  [ Josselin Mouette ]
+  * New upstream pre-release.
+  * 01_tasklist_orientation.patch: update for new version, and fix 
+    header.
+  * Update build-dependencies.
+
+ -- Josselin Mouette <joss@debian.org>  Wed, 16 Mar 2011 21:03:10 +0100
 
 libwnck (2.30.4-3) unstable; urgency=low
 

@@ -1,20 +1,20 @@
 Debian #524117
 GNOME #513347 and #86382
 
-Index: libwnck-2.91.6/libwnck/tasklist.c
+Index: libwnck-2.91.90/libwnck/tasklist.c
 ===================================================================
---- libwnck-2.91.6.orig/libwnck/tasklist.c	2011-02-01 00:12:48.000000000 +1100
-+++ libwnck-2.91.6/libwnck/tasklist.c	2011-02-09 16:10:09.895816275 +1100
-@@ -228,6 +228,8 @@
+--- libwnck-2.91.90.orig/libwnck/tasklist.c	2011-02-03 16:35:32.000000000 +0100
++++ libwnck-2.91.90/libwnck/tasklist.c	2011-03-16 20:52:29.663129664 +0100
+@@ -228,6 +228,8 @@ struct _WnckTasklistPrivate
    GtkReliefStyle relief;
  
    guint drag_start_time;
 +
-+  GtkOrientation orientation;  
++  GtkOrientation orientation;
  };
  
  static GType wnck_task_get_type (void);
-@@ -312,6 +314,7 @@
+@@ -308,6 +310,7 @@ static int      wnck_tasklist_layout
  					     int             max_width,
  					     int             max_height,
  					     int             n_buttons,
@@ -22,7 +22,7 @@ Index: libwnck-2.91.6/libwnck/tasklist.c
  					     int            *n_cols_out,
  					     int            *n_rows_out);
  
-@@ -924,6 +927,20 @@
+@@ -892,6 +895,20 @@ wnck_tasklist_set_button_relief (WnckTas
  }
  
  /**
@@ -43,7 +43,7 @@ Index: libwnck-2.91.6/libwnck/tasklist.c
   * wnck_tasklist_set_switch_workspace_on_unminimize:
   * @tasklist: a #WnckTasklist.
   * @switch_workspace_on_unminimize: whether to activate the #WnckWorkspace a
-@@ -1035,25 +1052,35 @@
+@@ -1003,25 +1020,35 @@ wnck_tasklist_layout (GtkAllocation *all
  		      int            max_width,
  		      int            max_height,
  		      int            n_buttons,
@@ -89,7 +89,7 @@ Index: libwnck-2.91.6/libwnck/tasklist.c
  
    *n_cols_out = n_cols;
    *n_rows_out = n_rows;
-@@ -1256,19 +1283,31 @@
+@@ -1226,19 +1253,31 @@ wnck_tasklist_size_request  (GtkWidget
  			tasklist->priv->max_button_width,
  			tasklist->priv->max_button_height,
  			n_windows + n_startup_sequences,
@@ -128,7 +128,7 @@ Index: libwnck-2.91.6/libwnck/tasklist.c
      }
  
    while (ungrouped_class_groups != NULL &&
-@@ -1288,29 +1327,56 @@
+@@ -1258,29 +1297,56 @@ wnck_tasklist_size_request  (GtkWidget
  			    tasklist->priv->max_button_width,
  			    tasklist->priv->max_button_height,
  			    n_startup_sequences + n_windows - n_grouped_buttons,
@@ -207,7 +207,7 @@ Index: libwnck-2.91.6/libwnck/tasklist.c
      }
  
    g_list_free (ungrouped_class_groups);
-@@ -1332,8 +1398,13 @@
+@@ -1302,8 +1368,13 @@ wnck_tasklist_size_request  (GtkWidget
  
    tasklist->priv->size_hints = (int *)g_array_free (array, FALSE);
  
@@ -223,7 +223,7 @@ Index: libwnck-2.91.6/libwnck/tasklist.c
  }
  
  static void
-@@ -1454,6 +1525,7 @@
+@@ -1428,6 +1499,7 @@ wnck_tasklist_size_allocate (GtkWidget
  				       tasklist->priv->max_button_width,
  				       tasklist->priv->max_button_height,
  				       n_startup_sequences + n_windows,
@@ -231,7 +231,7 @@ Index: libwnck-2.91.6/libwnck/tasklist.c
  				       &n_cols, &n_rows);
    while (ungrouped_class_groups != NULL &&
  	 ((tasklist->priv->grouping == WNCK_TASKLIST_ALWAYS_GROUP) ||
-@@ -1499,6 +1571,7 @@
+@@ -1473,6 +1545,7 @@ wnck_tasklist_size_allocate (GtkWidget
  					   tasklist->priv->max_button_width,
  					   tasklist->priv->max_button_height,
  					   n_startup_sequences + n_windows - n_grouped_buttons,
@@ -239,7 +239,7 @@ Index: libwnck-2.91.6/libwnck/tasklist.c
  					   &n_cols, &n_rows);
      }
  
-@@ -1994,6 +2067,7 @@
+@@ -1970,6 +2043,7 @@ wnck_tasklist_new (void)
    WnckTasklist *tasklist;
  
    tasklist = g_object_new (WNCK_TYPE_TASKLIST, NULL);
@@ -247,7 +247,7 @@ Index: libwnck-2.91.6/libwnck/tasklist.c
  
    return GTK_WIDGET (tasklist);
  }
-@@ -4035,7 +4109,6 @@
+@@ -4039,7 +4113,6 @@ wnck_task_new_from_window (WnckTasklist
    WnckTask *task;
  
    task = g_object_new (WNCK_TYPE_TASK, NULL);
@@ -255,3 +255,18 @@ Index: libwnck-2.91.6/libwnck/tasklist.c
    task->type = WNCK_TASK_WINDOW;
    task->window = g_object_ref (window);
    task->class_group = g_object_ref (wnck_window_get_class_group (window));
+Index: libwnck-2.91.90/libwnck/tasklist.h
+===================================================================
+--- libwnck-2.91.90.orig/libwnck/tasklist.h	2011-03-16 20:52:37.771631578 +0100
++++ libwnck-2.91.90/libwnck/tasklist.h	2011-03-16 20:54:04.499131785 +0100
+@@ -103,6 +103,10 @@ void wnck_tasklist_set_include_all_works
+ 					       gboolean      include_all_workspaces);
+ void wnck_tasklist_set_button_relief (WnckTasklist *tasklist,
+                                       GtkReliefStyle relief);
++#ifdef WNCK_I_KNOW_THIS_IS_NOT_UPSTREAM
++void wnck_tasklist_set_orientation(WnckTasklist *tasklist,
++                                   GtkOrientation orient);
++#endif
+ 
+ /**
+  * WnckLoadIconFunction:
