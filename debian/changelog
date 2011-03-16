@@ -1,4 +1,4 @@
-libwnck3 (2.91.90-1) unstable; urgency=low
+libwnck3 (2.91.90-1) experimental; urgency=low
 
   [ Robert Ancell ]
   * Initial Release (based on libwnck package)
