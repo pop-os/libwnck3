@@ -13,5 +13,4 @@ LDFLAGS += -Wl,-z,defs -Wl,-O1 -Wl,--as-needed
 DEB_DH_MAKESHLIBS_ARGS_ALL += -V -- -c4
 
 DEB_CONFIGURE_EXTRA_FLAGS += \
-	--disable-gtk-doc \
-	--with-html-dir=\$${prefix}/share/doc/libwnck-3-dev/html
+	--disable-gtk-doc

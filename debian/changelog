@@ -17,6 +17,7 @@ libwnck3 (2.91.90-1) unstable; urgency=low
   * 01_tasklist_orientation.patch: update for new version, and fix 
     header.
   * Update build-dependencies.
+  * Move documentation back to /usr/share/gtk-doc.
 
  -- Josselin Mouette <joss@debian.org>  Wed, 16 Mar 2011 21:03:10 +0100
 

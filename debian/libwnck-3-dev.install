@@ -3,6 +3,5 @@ debian/tmp/usr/bin/wnckprop
 debian/tmp/usr/lib/pkgconfig
 debian/tmp/usr/lib/libwnck-3.a
 debian/tmp/usr/lib/libwnck-3.so
-debian/tmp/usr/share/doc/libwnck-3-dev/html
+debian/tmp/usr/share/gtk-doc/
 debian/tmp/usr/share/gir-1.0
-
