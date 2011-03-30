@@ -1,3 +1,9 @@
+libwnck3 (2.91.90-2) UNRELEASED; urgency=low
+
+  * Make the -dev package depend on the gir package.
+
+ -- Josselin Mouette <joss@debian.org>  Wed, 30 Mar 2011 20:25:13 +0200
+
 libwnck3 (2.91.90-1) experimental; urgency=low
 
   [ Robert Ancell ]
