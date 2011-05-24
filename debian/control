@@ -7,7 +7,7 @@ Source: libwnck3
 Section: libs
 Priority: optional
 Maintainer: Josselin Mouette <joss@debian.org>
-Uploaders: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>, Emilio Pozuelo Monfort <pochu@debian.org>, Sebastian Dröge <slomo@debian.org>
+Uploaders: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>, Emilio Pozuelo Monfort <pochu@debian.org>, Frederic Peters <fpeters@debian.org>
 Standards-Version: 3.9.1
 Build-Depends: debhelper (>= 5),
                cdbs (>= 0.4.90),
@@ -32,6 +32,8 @@ Build-Depends: debhelper (>= 5),
                gtk-doc-tools (>= 1.9),
                libglib2.0-doc,
                libgtk-3-doc
+Vcs-Svn: svn://svn.debian.org/svn/pkg-gnome/desktop/unstable/libwnck3
+Vcs-Browser: http://svn.debian.org/viewsvn/pkg-gnome/desktop/unstable/libwnck3
 
 Package: libwnck-3-0
 Architecture: any

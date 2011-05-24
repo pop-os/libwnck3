@@ -27,6 +27,8 @@ Build-Depends: debhelper (>= 5),
                gtk-doc-tools (>= 1.9),
                libglib2.0-doc,
                libgtk-3-doc
+Vcs-Svn: svn://svn.debian.org/svn/pkg-gnome/desktop/unstable/libwnck3
+Vcs-Browser: http://svn.debian.org/viewsvn/pkg-gnome/desktop/unstable/libwnck3
 
 Package: libwnck-3-0
 Architecture: any
