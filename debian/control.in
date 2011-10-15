@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Josselin Mouette <joss@debian.org>
 Uploaders: @GNOME_TEAM@
 Standards-Version: 3.9.1
-Build-Depends: debhelper (>= 5),
+Build-Depends: debhelper (>= 8),
                cdbs (>= 0.4.90),
                gnome-pkg-tools (>= 0.10),
                gettext,
