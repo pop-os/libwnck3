@@ -1,4 +1,4 @@
-libwnck3 (3.2.0-1) UNRELEASED; urgency=low
+libwnck3 (3.2.0-1) unstable; urgency=low
 
   * New upstream release.
 
@@ -24,7 +24,7 @@ libwnck3 (3.2.0-1) UNRELEASED; urgency=low
   * debian/rules:
     - Build the gtk-doc API documentation.
 
- -- Michael Biebl <biebl@debian.org>  Sun, 16 Oct 2011 09:51:38 +0200
+ -- Michael Biebl <biebl@debian.org>  Sun, 16 Oct 2011 10:15:07 +0200
 
 libwnck3 (3.0.2-1) unstable; urgency=low
 
