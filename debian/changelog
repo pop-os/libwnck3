@@ -19,6 +19,8 @@ libwnck3 (3.2.0-1) UNRELEASED; urgency=low
   * debian/libwnck-3-dev.install:
     - Stop installing the .a static library. Disabled by default upstream.
   * Refesh patches.
+  * debian/libwnck-3-0.symbols:
+    - Add new symbols.
 
  -- Michael Biebl <biebl@debian.org>  Sun, 16 Oct 2011 09:51:38 +0200
 
