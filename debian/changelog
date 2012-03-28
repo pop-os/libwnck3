@@ -1,4 +1,4 @@
-libwnck3 (3.4.0-1) UNRELEASED; urgency=low
+libwnck3 (3.4.0-1) unstable; urgency=low
 
   * New upstream release.
   * Change section of gir1.2-wnck-3.0 to introspection.
@@ -7,7 +7,7 @@ libwnck3 (3.4.0-1) UNRELEASED; urgency=low
     anymore.
   * debian/control.in: Update (Build-)Depends according to configure.ac.
 
- -- Michael Biebl <biebl@debian.org>  Wed, 28 Mar 2012 15:30:51 +0200
+ -- Michael Biebl <biebl@debian.org>  Wed, 28 Mar 2012 15:35:07 +0200
 
 libwnck3 (3.2.1-1) unstable; urgency=low
 
