@@ -67,6 +67,7 @@ libwnck-3.so.0 libwnck-3-0 #MINVER#
  wnck_selector_get_type@Base 2.91.6
  wnck_selector_new@Base 2.91.6
  wnck_set_client_type@Base 2.91.6
+ wnck_shutdown@Base 3.4.0
  wnck_tasklist_get_size_hint_list@Base 2.91.6
  wnck_tasklist_get_type@Base 2.91.6
  wnck_tasklist_grouping_type_get_type@Base 2.91.6

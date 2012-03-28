@@ -2,8 +2,9 @@ libwnck3 (3.4.0-1) UNRELEASED; urgency=low
 
   * New upstream release.
   * Change section of gir1.2-wnck-3.0 to introspection.
+  * debian/libwnck-3-0.symbols: Add new symbol.
 
- -- Michael Biebl <biebl@debian.org>  Fri, 16 Dec 2011 21:31:37 +0100
+ -- Michael Biebl <biebl@debian.org>  Wed, 28 Mar 2012 15:29:47 +0200
 
 libwnck3 (3.2.1-1) unstable; urgency=low
 
