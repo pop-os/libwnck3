@@ -5,8 +5,9 @@ libwnck3 (3.4.0-1) UNRELEASED; urgency=low
   * debian/libwnck-3-0.symbols: Add new symbol.
   * debian/rules: Drop clean-la.mk since we don't install any .la files
     anymore.
+  * debian/control.in: Update (Build-)Depends according to configure.ac.
 
- -- Michael Biebl <biebl@debian.org>  Wed, 28 Mar 2012 15:30:09 +0200
+ -- Michael Biebl <biebl@debian.org>  Wed, 28 Mar 2012 15:30:51 +0200
 
 libwnck3 (3.2.1-1) unstable; urgency=low
 
