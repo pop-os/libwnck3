@@ -1,6 +1,7 @@
 libwnck3 (3.4.2-1) UNRELEASED; urgency=low
 
   * New upstream release.
+    - Fix scroll wheel in pager and task selector. Closes: #669961
   * Refresh debian/patches/01_tasklist_orientation.patch.
   * Drop explicit Build-Depends on gir packages.
   * Bump Standards-Version t 3.9.3.
