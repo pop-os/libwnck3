@@ -1,6 +1,7 @@
 libwnck3 (3.4.2-1) UNRELEASED; urgency=low
 
   * New upstream release.
+  * Refresh debian/patches/01_tasklist_orientation.patch.
 
  -- Michael Biebl <biebl@debian.org>  Wed, 28 Mar 2012 15:41:26 +0200
 
