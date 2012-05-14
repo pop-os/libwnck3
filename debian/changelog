@@ -1,3 +1,9 @@
+libwnck3 (3.4.2-1) UNRELEASED; urgency=low
+
+  * New upstream release.
+
+ -- Michael Biebl <biebl@debian.org>  Wed, 28 Mar 2012 15:41:26 +0200
+
 libwnck3 (3.4.0-1) unstable; urgency=low
 
   * New upstream release.
