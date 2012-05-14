@@ -1,4 +1,4 @@
-libwnck3 (3.4.2-1) UNRELEASED; urgency=low
+libwnck3 (3.4.2-1) unstable; urgency=low
 
   * New upstream release.
     - Fix scroll wheel in pager and task selector. Closes: #669961
@@ -7,7 +7,7 @@ libwnck3 (3.4.2-1) UNRELEASED; urgency=low
   * Bump Standards-Version t 3.9.3.
   * Update Vcs-* URLs.
 
- -- Michael Biebl <biebl@debian.org>  Wed, 28 Mar 2012 15:41:26 +0200
+ -- Michael Biebl <biebl@debian.org>  Mon, 14 May 2012 19:46:24 +0200
 
 libwnck3 (3.4.0-1) unstable; urgency=low
 
