@@ -98,6 +98,7 @@ libwnck-3.so.0 libwnck-3-0 #MINVER#
  wnck_window_get_mini_icon@Base 2.91.6
  wnck_window_get_name@Base 2.91.6
  wnck_window_get_pid@Base 2.91.6
+ wnck_window_get_role@Base 3.4.5
  wnck_window_get_screen@Base 2.91.6
  wnck_window_get_session_id@Base 2.91.6
  wnck_window_get_session_id_utf8@Base 2.91.6
