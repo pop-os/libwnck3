@@ -6,6 +6,8 @@ libwnck3 (3.4.5-1) UNRELEASED; urgency=low
   * Bump required version of libglib2.0-dev to (>= 2.32) and libgtk-3-dev
     to (>= 3.4).
   * Bump Standards-Version to 3.9.4. No further changes.
+  * Add Build-Depends on autotools-dev as lintian was complaining about
+    outdated config.{guess,sub}.
 
  -- Michael Biebl <biebl@debian.org>  Mon, 14 May 2012 19:54:32 +0200
 

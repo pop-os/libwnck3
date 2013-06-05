@@ -11,6 +11,7 @@ Uploaders: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.o
 Standards-Version: 3.9.4
 Build-Depends: debhelper (>= 8),
                cdbs (>= 0.4.90),
+               autotools-dev,
                gnome-pkg-tools (>= 0.10),
                gettext,
                libstartup-notification0-dev (>= 0.7),
