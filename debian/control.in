@@ -3,7 +3,7 @@ Section: libs
 Priority: optional
 Maintainer: Josselin Mouette <joss@debian.org>
 Uploaders: @GNOME_TEAM@
-Standards-Version: 3.9.3
+Standards-Version: 3.9.4
 Build-Depends: debhelper (>= 8),
                cdbs (>= 0.4.90),
                gnome-pkg-tools (>= 0.10),
