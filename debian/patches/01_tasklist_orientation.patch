@@ -1,10 +1,10 @@
 Debian #524117
 GNOME #513347 and #86382
 
-Index: libwnck-3.4.2/libwnck/tasklist.c
+Index: libwnck-3.4.5/libwnck/tasklist.c
 ===================================================================
---- libwnck-3.4.2.orig/libwnck/tasklist.c	2012-05-14 19:29:15.105044384 +0200
-+++ libwnck-3.4.2/libwnck/tasklist.c	2012-05-14 19:29:17.501044299 +0200
+--- libwnck-3.4.5.orig/libwnck/tasklist.c	2013-06-05 10:08:37.198079933 +0200
++++ libwnck-3.4.5/libwnck/tasklist.c	2013-06-05 10:08:37.190079840 +0200
 @@ -228,6 +228,8 @@
    GtkReliefStyle relief;
  
@@ -233,7 +233,7 @@ Index: libwnck-3.4.2/libwnck/tasklist.c
  
    return GTK_WIDGET (tasklist);
  }
-@@ -4062,7 +4135,6 @@
+@@ -4069,7 +4142,6 @@
    WnckTask *task;
  
    task = g_object_new (WNCK_TYPE_TASK, NULL);
@@ -241,10 +241,10 @@ Index: libwnck-3.4.2/libwnck/tasklist.c
    task->type = WNCK_TASK_WINDOW;
    task->window = g_object_ref (window);
    task->class_group = g_object_ref (wnck_window_get_class_group (window));
-Index: libwnck-3.4.2/libwnck/tasklist.h
+Index: libwnck-3.4.5/libwnck/tasklist.h
 ===================================================================
---- libwnck-3.4.2.orig/libwnck/tasklist.h	2012-05-14 19:29:15.105044384 +0200
-+++ libwnck-3.4.2/libwnck/tasklist.h	2012-05-14 19:29:17.501044299 +0200
+--- libwnck-3.4.5.orig/libwnck/tasklist.h	2013-06-05 10:08:37.198079933 +0200
++++ libwnck-3.4.5/libwnck/tasklist.h	2013-06-05 10:08:37.194079886 +0200
 @@ -103,6 +103,10 @@
  					       gboolean      include_all_workspaces);
  void wnck_tasklist_set_button_relief (WnckTasklist *tasklist,

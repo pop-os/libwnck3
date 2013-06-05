@@ -1,6 +1,7 @@
 libwnck3 (3.4.5-1) UNRELEASED; urgency=low
 
   * New upstream release.
+  * Refresh patches.
 
  -- Michael Biebl <biebl@debian.org>  Mon, 14 May 2012 19:54:32 +0200
 
