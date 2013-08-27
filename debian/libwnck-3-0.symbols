@@ -67,6 +67,8 @@ libwnck-3.so.0 libwnck-3-0 #MINVER#
  wnck_selector_get_type@Base 2.91.6
  wnck_selector_new@Base 2.91.6
  wnck_set_client_type@Base 2.91.6
+ wnck_set_default_icon_size@Base 3.4.7
+ wnck_set_default_mini_icon_size@Base 3.4.7
  wnck_shutdown@Base 3.4.0
  wnck_tasklist_get_size_hint_list@Base 2.91.6
  wnck_tasklist_get_type@Base 2.91.6
@@ -77,6 +79,7 @@ libwnck-3.so.0 libwnck-3-0 #MINVER#
  wnck_tasklist_set_grouping_limit@Base 2.91.6
  wnck_tasklist_set_icon_loader@Base 2.91.6
  wnck_tasklist_set_include_all_workspaces@Base 2.91.6
+ wnck_tasklist_set_middle_click_close@Base 3.4.7
  wnck_tasklist_set_orientation@Base 2.91.6
  wnck_tasklist_set_switch_workspace_on_unminimize@Base 2.91.6
  wnck_window_actions_get_type@Base 2.91.6

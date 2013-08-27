@@ -2,6 +2,7 @@ libwnck3 (3.4.7-1) UNRELEASED; urgency=low
 
   * New upstream release.
   * Remove debian/patches/01_tasklist_orientation.patch, merged upstream.
+  * Update symbols file.
 
  -- Michael Biebl <biebl@debian.org>  Wed, 28 Aug 2013 00:35:39 +0200
 
