@@ -56,7 +56,6 @@ Depends: ${misc:Depends},
          libcairo2-dev,
          libxres-dev
 Conflicts: libwnck-dev (<< 2.30.7-1)
-Replaces: gir-repository-dev (<< 0.6.5-7)
 Description: Window Navigator Construction Kit - development files
  A library to use for writing pagers and task lists.
  .
