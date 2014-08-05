@@ -2,7 +2,6 @@
 # 
 # Modifications should be made to debian/control.in instead.
 # This file is regenerated automatically in the clean target.
-
 Source: libwnck3
 Section: libs
 Priority: optional
@@ -10,6 +9,7 @@ Maintainer: Josselin Mouette <joss@debian.org>
 Uploaders: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>, Emilio Pozuelo Monfort <pochu@debian.org>, Frederic Peters <fpeters@debian.org>, Martin Pitt <mpitt@debian.org>, Michael Biebl <biebl@debian.org>
 Standards-Version: 3.9.4
 Build-Depends: debhelper (>= 8),
+               dh-autoreconf,
                cdbs (>= 0.4.90),
                autotools-dev,
                gnome-pkg-tools (>= 0.10),
