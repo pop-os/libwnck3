@@ -28,7 +28,9 @@ Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/desktop/unstable/libwnck3
 Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-gnome/desktop/unstable/libwnck3
 
 Package: libwnck-3-0
+Pre-Depends: ${misc:Pre-Depends}
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends},
          ${shlibs:Depends},
          libwnck-3-common
@@ -59,6 +61,7 @@ Description: Window Navigator Construction Kit - development files
 
 Package: libwnck-3-common
 Architecture: all
+Multi-Arch: foreign
 Depends: ${misc:Depends}
 Description: Window Navigator Construction Kit - common files
  A library to use for writing pagers and task lists.

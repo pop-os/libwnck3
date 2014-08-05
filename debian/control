@@ -6,7 +6,7 @@ Source: libwnck3
 Section: libs
 Priority: optional
 Maintainer: Josselin Mouette <joss@debian.org>
-Uploaders: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>, Emilio Pozuelo Monfort <pochu@debian.org>, Frederic Peters <fpeters@debian.org>, Martin Pitt <mpitt@debian.org>, Michael Biebl <biebl@debian.org>
+Uploaders: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>, Frederic Peters <fpeters@debian.org>, Martin Pitt <mpitt@debian.org>, Michael Biebl <biebl@debian.org>
 Standards-Version: 3.9.4
 Build-Depends: debhelper (>= 8),
                dh-autoreconf,
@@ -32,7 +32,9 @@ Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/desktop/unstable/libwnck3
 Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-gnome/desktop/unstable/libwnck3
 
 Package: libwnck-3-0
+Pre-Depends: ${misc:Pre-Depends}
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends},
          ${shlibs:Depends},
          libwnck-3-common
@@ -63,6 +65,7 @@ Description: Window Navigator Construction Kit - development files
 
 Package: libwnck-3-common
 Architecture: all
+Multi-Arch: foreign
 Depends: ${misc:Depends}
 Description: Window Navigator Construction Kit - common files
  A library to use for writing pagers and task lists.
