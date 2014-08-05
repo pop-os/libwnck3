@@ -1,2 +1,3 @@
+git_window_action_menu_dispose_events.patch
 02_moveresize_static_gravity.patch
 99_ltmain_as-needed.patch
