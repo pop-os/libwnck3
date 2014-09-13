@@ -1,3 +1,12 @@
+libwnck3 (3.4.9-1) UNRELEASED; urgency=medium
+
+  * New upstream release.
+  * Drop patches from upstream now included in release:
+    - debian/patches/git_support_gtk_frame_extents.patch
+    - debian/patches/git_window_action_menu_dispose_events.patch
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 13 Sep 2014 13:39:58 +0200
+
 libwnck3 (3.4.7-3) unstable; urgency=medium
 
   * Add git_support_gtk_frame_extents.patch: Add support for
