@@ -6,7 +6,7 @@ Source: libwnck3
 Section: libs
 Priority: optional
 Maintainer: Josselin Mouette <joss@debian.org>
-Uploaders: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>, Frederic Peters <fpeters@debian.org>, Martin Pitt <mpitt@debian.org>, Michael Biebl <biebl@debian.org>
+Uploaders: Andreas Henriksson <andreas@fatal.se>, Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>, Martin Pitt <mpitt@debian.org>, Michael Biebl <biebl@debian.org>
 Standards-Version: 3.9.5
 Build-Depends: debhelper (>= 8),
                dh-autoreconf,
