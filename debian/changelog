@@ -4,6 +4,8 @@ libwnck3 (3.4.9-1) UNRELEASED; urgency=medium
   * Drop patches from upstream now included in release:
     - debian/patches/git_support_gtk_frame_extents.patch
     - debian/patches/git_window_action_menu_dispose_events.patch
+  * Use DEB_DH_AUTORECONF_ARGS instead of patching ltmain manually.
+    - drop debian/patches/99_ltmain_as-needed.patch
 
  -- Andreas Henriksson <andreas@fatal.se>  Sat, 13 Sep 2014 13:39:58 +0200
 
