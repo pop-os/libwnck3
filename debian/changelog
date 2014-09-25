@@ -1,6 +1,7 @@
 libwnck3 (3.4.9-2) UNRELEASED; urgency=medium
 
   * Install typelib file into MA libdir and mark gir package as M-A: same.
+  * Don't duplicate gnome-pkg-tools BD, thanks Lintian.
 
  -- Iain Lane <laney@debian.org>  Thu, 25 Sep 2014 12:04:00 +0100
 
