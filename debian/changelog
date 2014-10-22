@@ -1,4 +1,4 @@
-libwnck3 (3.4.9-3) UNRELEASED; urgency=medium
+libwnck3 (3.4.9-3) unstable; urgency=medium
 
   * Backport two patches from upstream Git:
     - To make get_workspace_rect() skip invalid rectangles.
