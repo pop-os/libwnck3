@@ -1,3 +1,11 @@
+libwnck3 (3.4.9-3) UNRELEASED; urgency=medium
+
+  * Backport two patches from upstream Git:
+    - To make get_workspace_rect() skip invalid rectangles.
+    - To fix missing icon in tasklist button.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 22 Oct 2014 19:10:12 +0400
+
 libwnck3 (3.4.9-2) unstable; urgency=medium
 
   * Install typelib file into MA libdir and mark gir package as M-A: same.

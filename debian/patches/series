@@ -1,1 +1,3 @@
 #02_moveresize_static_gravity.patch
+03_skip_invalid_rectangles.patch
+04_missing_icon_in_tasklist.patch
