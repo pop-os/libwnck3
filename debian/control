@@ -2,39 +2,38 @@
 # 
 # Modifications should be made to debian/control.in instead.
 # This file is regenerated automatically in the clean target.
-
 Source: libwnck3
 Section: libs
 Priority: optional
 Maintainer: Josselin Mouette <joss@debian.org>
-Uploaders: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>, Emilio Pozuelo Monfort <pochu@debian.org>, Sebastian Dröge <slomo@debian.org>
-Standards-Version: 3.9.1
-Build-Depends: debhelper (>= 5),
+Uploaders: Andreas Henriksson <andreas@fatal.se>, Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>, Dmitry Shachnev <mitya57@debian.org>, Martin Pitt <mpitt@debian.org>, Michael Biebl <biebl@debian.org>
+Standards-Version: 3.9.5
+Build-Depends: debhelper (>= 8),
+               dh-autoreconf,
                cdbs (>= 0.4.90),
+               autotools-dev,
                gnome-pkg-tools (>= 0.10),
                gettext,
                libstartup-notification0-dev (>= 0.7),
-               gnome-pkg-tools (>= 0.10),
                docbook-xml,
                libx11-dev,
                libxres-dev,
                libxext-dev,
-               intltool (>= 0.40.0),
-               libgtk-3-dev (>= 2.91.5),
-               libglib2.0-dev (>= 2.16.0),
+               intltool (>= 0.40.6),
+               libgtk-3-dev (>= 3.4),
+               libglib2.0-dev (>= 2.32),
                gobject-introspection (>= 0.10),
                libgirepository1.0-dev (>= 0.10),
-               gir1.2-atk-1.0,
-               gir1.2-freedesktop,
-               gir1.2-glib-2.0,
-               gir1.2-gtk-3.0,
-               gir1.2-pango-1.0,
                gtk-doc-tools (>= 1.9),
                libglib2.0-doc,
                libgtk-3-doc
+Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/desktop/unstable/libwnck3
+Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-gnome/desktop/unstable/libwnck3
 
 Package: libwnck-3-0
+Pre-Depends: ${misc:Pre-Depends}
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends},
          ${shlibs:Depends},
          libwnck-3-common
@@ -47,18 +46,17 @@ Package: libwnck-3-dev
 Architecture: any
 Section: libdevel
 Depends: ${misc:Depends},
+         ${shlibs:Depends},
          libwnck-3-0 (= ${binary:Version}),
          gir1.2-wnck-3.0 (= ${binary:Version}),
-         libglib2.0-dev (>= 2.13.0),
+         libglib2.0-dev (>= 2.32),
          libpango1.0-dev,
          libx11-dev,
-         libgtk-3-dev (>= 3.0.0),
-         libstartup-notification0-dev (>= 0.7-1),
+         libgtk-3-dev (>= 3.4),
+         libstartup-notification0-dev (>= 0.7),
          libcairo2-dev,
-         libxres-dev,
-         ${shlibs:Depends}
-Conflicts: libwnck-dev
-Replaces: gir-repository-dev (<< 0.6.5-7)
+         libxres-dev
+Conflicts: libwnck-dev (<< 2.30.7-1)
 Description: Window Navigator Construction Kit - development files
  A library to use for writing pagers and task lists.
  .
@@ -66,6 +64,7 @@ Description: Window Navigator Construction Kit - development files
 
 Package: libwnck-3-common
 Architecture: all
+Multi-Arch: foreign
 Depends: ${misc:Depends}
 Description: Window Navigator Construction Kit - common files
  A library to use for writing pagers and task lists.
@@ -74,9 +73,11 @@ Description: Window Navigator Construction Kit - common files
 
 Package: gir1.2-wnck-3.0
 Architecture: any
+Section: introspection
 Depends: ${gir:Depends},
          ${misc:Depends},
          ${shlibs:Depends}
+Multi-Arch: same
 Description: GObject introspection data for the WNCK library
  This package contains introspection data for Window Navigator
  Construction Kit, a library to interact with window managers.

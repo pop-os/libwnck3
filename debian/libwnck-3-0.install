@@ -1,1 +1,1 @@
-debian/tmp/usr/lib/libwnck-3.so.*
+usr/lib/*/libwnck-3.so.*

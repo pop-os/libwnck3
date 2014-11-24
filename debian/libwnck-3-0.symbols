@@ -16,6 +16,7 @@ libwnck-3.so.0 libwnck-3-0 #MINVER#
  wnck_application_get_xid@Base 2.91.6
  wnck_class_group_get@Base 2.91.6
  wnck_class_group_get_icon@Base 2.91.6
+ wnck_class_group_get_id@Base 3.2.0
  wnck_class_group_get_mini_icon@Base 2.91.6
  wnck_class_group_get_name@Base 2.91.6
  wnck_class_group_get_res_class@Base 2.91.6
@@ -66,6 +67,9 @@ libwnck-3.so.0 libwnck-3-0 #MINVER#
  wnck_selector_get_type@Base 2.91.6
  wnck_selector_new@Base 2.91.6
  wnck_set_client_type@Base 2.91.6
+ wnck_set_default_icon_size@Base 3.4.7
+ wnck_set_default_mini_icon_size@Base 3.4.7
+ wnck_shutdown@Base 3.4.0
  wnck_tasklist_get_size_hint_list@Base 2.91.6
  wnck_tasklist_get_type@Base 2.91.6
  wnck_tasklist_grouping_type_get_type@Base 2.91.6
@@ -75,6 +79,7 @@ libwnck-3.so.0 libwnck-3-0 #MINVER#
  wnck_tasklist_set_grouping_limit@Base 2.91.6
  wnck_tasklist_set_icon_loader@Base 2.91.6
  wnck_tasklist_set_include_all_workspaces@Base 2.91.6
+ wnck_tasklist_set_middle_click_close@Base 3.4.7
  wnck_tasklist_set_orientation@Base 2.91.6
  wnck_tasklist_set_switch_workspace_on_unminimize@Base 2.91.6
  wnck_window_actions_get_type@Base 2.91.6
@@ -85,6 +90,8 @@ libwnck-3.so.0 libwnck-3-0 #MINVER#
  wnck_window_get_actions@Base 2.91.6
  wnck_window_get_application@Base 2.91.6
  wnck_window_get_class_group@Base 2.91.6
+ wnck_window_get_class_group_name@Base 3.2.0
+ wnck_window_get_class_instance_name@Base 3.2.0
  wnck_window_get_client_window_geometry@Base 2.91.6
  wnck_window_get_geometry@Base 2.91.6
  wnck_window_get_group_leader@Base 2.91.6
@@ -94,6 +101,7 @@ libwnck-3.so.0 libwnck-3-0 #MINVER#
  wnck_window_get_mini_icon@Base 2.91.6
  wnck_window_get_name@Base 2.91.6
  wnck_window_get_pid@Base 2.91.6
+ wnck_window_get_role@Base 3.4.5
  wnck_window_get_screen@Base 2.91.6
  wnck_window_get_session_id@Base 2.91.6
  wnck_window_get_session_id_utf8@Base 2.91.6

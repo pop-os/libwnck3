@@ -1,3 +1,145 @@
+libwnck3 (3.4.9-3) unstable; urgency=medium
+
+  * Backport two patches from upstream Git:
+    - To make get_workspace_rect() skip invalid rectangles.
+    - To fix missing icon in tasklist button.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 22 Oct 2014 19:10:12 +0400
+
+libwnck3 (3.4.9-2) unstable; urgency=medium
+
+  * Install typelib file into MA libdir and mark gir package as M-A: same.
+  * Don't duplicate gnome-pkg-tools BD, thanks Lintian.
+
+ -- Iain Lane <iain@orangesquash.org.uk>  Thu, 25 Sep 2014 12:25:26 +0100
+
+libwnck3 (3.4.9-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Drop patches from upstream now included in release:
+    - debian/patches/git_support_gtk_frame_extents.patch
+    - debian/patches/git_window_action_menu_dispose_events.patch
+  * Use DEB_DH_AUTORECONF_ARGS instead of patching ltmain manually.
+    - drop debian/patches/99_ltmain_as-needed.patch
+  * Disable debian/patches/02_moveresize_static_gravity.patch
+    - No mention of when/why this was introduced in debian/changelog
+    - Referenced upstream bug report has the original patch author
+      explain why this patch is not correct.
+    - Disable this until someone picks up the work upstream and figure
+      out which problem this is actually solving and making sure
+      that it doesn't introduce other problems.
+    - See https://bugzilla.gnome.org/show_bug.cgi?id=638483
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 13 Sep 2014 14:11:17 +0200
+
+libwnck3 (3.4.7-3) unstable; urgency=medium
+
+  * Add git_support_gtk_frame_extents.patch: Add support for
+    _GTK_FRAME_EXTENTS. Patch taken from upstream git.
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 05 Aug 2014 16:04:50 +0200
+
+libwnck3 (3.4.7-2) unstable; urgency=medium
+
+  * Build using dh-autoreconf, for supporting newer architectures.
+    (Closes: #757027)
+  * Enable Multi-Arch.
+  * Add debian/patches/git_window_action_menu_dispose_events.patch: Fix
+    objects to get finalized correctly, making sure the internal idle into
+    WnckActionMenu gets stopped. Patch taken from upstream git.
+    (LP: #1191853)
+  * debian/copyright: Reformat for 1.0 standard.
+  * Bump to Standards-Version 3.9.5.
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 05 Aug 2014 15:53:46 +0200
+
+libwnck3 (3.4.7-1) unstable; urgency=low
+
+  * New upstream release.
+  * Remove debian/patches/01_tasklist_orientation.patch, merged upstream.
+  * Update symbols file.
+  * Drop obsolete Replaces: gir-repository-dev (<< 0.6.5-7).
+
+ -- Michael Biebl <biebl@debian.org>  Wed, 28 Aug 2013 00:43:08 +0200
+
+libwnck3 (3.4.5-1) unstable; urgency=low
+
+  * New upstream release.
+  * Refresh patches.
+  * Update symbols file.
+  * Bump required version of libglib2.0-dev to (>= 2.32) and libgtk-3-dev
+    to (>= 3.4).
+  * Bump Standards-Version to 3.9.4. No further changes.
+  * Add Build-Depends on autotools-dev as lintian was complaining about
+    outdated config.{guess,sub}.
+
+ -- Michael Biebl <biebl@debian.org>  Wed, 05 Jun 2013 10:30:27 +0200
+
+libwnck3 (3.4.2-1) unstable; urgency=low
+
+  * New upstream release.
+    - Fix mouse wheel scrolling with new GTK+ in pager and task selector.
+      Closes: #669961
+  * Refresh debian/patches/01_tasklist_orientation.patch.
+  * Drop explicit Build-Depends on gir packages.
+  * Bump Standards-Version t 3.9.3.
+  * Update Vcs-* URLs.
+
+ -- Michael Biebl <biebl@debian.org>  Mon, 14 May 2012 19:46:24 +0200
+
+libwnck3 (3.4.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * Change section of gir1.2-wnck-3.0 to introspection.
+  * debian/libwnck-3-0.symbols: Add new symbol.
+  * debian/rules: Drop clean-la.mk since we don't install any .la files
+    anymore.
+  * debian/control.in: Update (Build-)Depends according to configure.ac.
+
+ -- Michael Biebl <biebl@debian.org>  Wed, 28 Mar 2012 15:35:07 +0200
+
+libwnck3 (3.2.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Michael Biebl <biebl@debian.org>  Wed, 19 Oct 2011 02:10:20 +0200
+
+libwnck3 (3.2.0-1) unstable; urgency=low
+
+  * New upstream release.
+
+  [ Michael Terry ]
+  * debian/control.in:
+    - Version the libwnck-dev conflicts
+
+  [ Michael Biebl ]
+  * debian/watch:
+    - Update to version 3.
+    - Track .xz tarballs.
+  * Bump debhelper compatibility to 8.
+    - Update Build-Depends on debhelper.
+    - Strip debian/tmp/ from .install files.
+  * debian/control.in:
+    - Bump Standards-Version to 3.9.2. No further changes.
+    - Bump Build-Depends on intltool to (>= 0.40.6).
+  * debian/libwnck-3-dev.install:
+    - Stop installing the .a static library. Disabled by default upstream.
+  * Refesh patches.
+  * debian/libwnck-3-0.symbols:
+    - Add new symbols.
+  * debian/rules:
+    - Build the gtk-doc API documentation.
+
+ -- Michael Biebl <biebl@debian.org>  Sun, 16 Oct 2011 10:15:07 +0200
+
+libwnck3 (3.0.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * Upload to unstable.
+  * debian/control.in: Add missing Vcs-* headers.
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 24 May 2011 16:51:23 +0200
+
 libwnck3 (3.0.0-1) experimental; urgency=low
 
   * New upstream release.

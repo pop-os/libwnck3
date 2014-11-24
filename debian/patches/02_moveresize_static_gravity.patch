@@ -11,10 +11,10 @@ will shift the window by the frame extents on vp switch.
  libwnck/window-action-menu.c |   10 +++++-----
  1 files changed, 5 insertions(+), 5 deletions(-)
 
-Index: libwnck-2.91.6/libwnck/window-action-menu.c
+Index: libwnck-3.2.0/libwnck/window-action-menu.c
 ===================================================================
---- libwnck-2.91.6.orig/libwnck/window-action-menu.c	2011-02-01 00:12:48.000000000 +1100
-+++ libwnck-2.91.6/libwnck/window-action-menu.c	2011-02-09 16:10:44.111816001 +1100
+--- libwnck-3.2.0.orig/libwnck/window-action-menu.c	2011-10-16 01:08:13.574231724 +0200
++++ libwnck-3.2.0/libwnck/window-action-menu.c	2011-10-16 01:08:24.514094191 +0200
 @@ -231,7 +231,7 @@
            width = wnck_screen_get_width (screen);
            wnck_window_get_geometry (window, &xw, &yw, &ww, &hw);
@@ -51,7 +51,7 @@ Index: libwnck-2.91.6/libwnck/window-action-menu.c
                                      WNCK_WINDOW_CHANGE_X | WNCK_WINDOW_CHANGE_Y,
                                      xw, yw + height,
                                      ww, hw);
-@@ -338,7 +338,7 @@
+@@ -334,7 +334,7 @@
            viewport_y = wnck_workspace_get_viewport_y (workspace);
  
            wnck_window_unstick (window);
