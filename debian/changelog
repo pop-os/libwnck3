@@ -1,4 +1,4 @@
-libwnck3 (3.14.0-1) UNRELEASED; urgency=medium
+libwnck3 (3.14.0-1) experimental; urgency=medium
 
   * New upstream release.
     - Fixes crash when running some OpenGL apps (LP: #1293252).
