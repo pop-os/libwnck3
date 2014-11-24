@@ -3,7 +3,7 @@ Section: libs
 Priority: optional
 Maintainer: Josselin Mouette <joss@debian.org>
 Uploaders: @GNOME_TEAM@
-Standards-Version: 3.9.5
+Standards-Version: 3.9.6
 Build-Depends: debhelper (>= 8),
                dh-autoreconf,
                cdbs (>= 0.4.90),

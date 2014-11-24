@@ -3,6 +3,7 @@ libwnck3 (3.14.0-1) UNRELEASED; urgency=medium
   * New upstream release.
     - Fixes crash when running some OpenGL apps (LP: #1293252).
   * Drop two patches from the previous upload, applied upstream.
+  * Bump Standards-Version to 3.9.6, no changes needed.
 
  -- Dmitry Shachnev <mitya57@debian.org>  Mon, 24 Nov 2014 17:01:23 +0300
 
