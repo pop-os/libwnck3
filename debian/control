@@ -52,7 +52,7 @@ Depends: ${misc:Depends},
          libglib2.0-dev (>= 2.32),
          libpango1.0-dev,
          libx11-dev,
-         libgtk-3-dev (>= 3.10),
+         libgtk-3-dev (>= 3.4),
          libstartup-notification0-dev (>= 0.7),
          libcairo2-dev,
          libxres-dev
