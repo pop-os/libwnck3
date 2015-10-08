@@ -28,7 +28,7 @@ Build-Depends: debhelper (>= 8),
                libglib2.0-doc,
                libgtk-3-doc
 Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/desktop/unstable/libwnck3
-Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-gnome/desktop/unstable/libwnck3
+Vcs-Browser: https://anonscm.debian.org/viewvc/pkg-gnome/desktop/unstable/libwnck3
 
 Package: libwnck-3-0
 Pre-Depends: ${misc:Pre-Depends}
