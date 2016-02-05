@@ -1,3 +1,9 @@
+libwnck3 (3.14.1-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Fri, 05 Feb 2016 19:16:53 +0300
+
 libwnck3 (3.14.0-2) unstable; urgency=medium
 
   * Bump libgtk-3-dev dependencies to 3.10, according to configure.ac.
