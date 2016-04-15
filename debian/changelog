@@ -1,10 +1,10 @@
-libwnck3 (3.14.1-2) UNRELEASED; urgency=medium
+libwnck3 (3.14.1-2) unstable; urgency=medium
 
   * d/p/0001-ActionMenu-Use-gtk_label_set_text_with_mnemonic-inst.patch:
     Cherry-pick from upstream to add mnemonics to labels. Thanks to Andrea
     Azzarone and Marco Trevisan. (LP: #1570812)
 
- -- Iain Lane <iain@orangesquash.org.uk>  Fri, 15 Apr 2016 12:57:56 +0100
+ -- Iain Lane <laney@debian.org>  Fri, 15 Apr 2016 13:17:41 +0100
 
 libwnck3 (3.14.1-1) unstable; urgency=medium
 
