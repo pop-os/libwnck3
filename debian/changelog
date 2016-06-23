@@ -1,3 +1,9 @@
+libwnck3 (3.20.0-1) UNRELEASED; urgency=medium
+
+  * New upstream release.
+
+ -- Michael Biebl <biebl@debian.org>  Fri, 24 Jun 2016 01:05:31 +0200
+
 libwnck3 (3.14.1-2) unstable; urgency=medium
 
   * d/p/0001-ActionMenu-Use-gtk_label_set_text_with_mnemonic-inst.patch:
