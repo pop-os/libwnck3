@@ -10,7 +10,6 @@ Uploaders: Andreas Henriksson <andreas@fatal.se>, Dmitry Shachnev <mitya57@debia
 Standards-Version: 3.9.6
 Build-Depends: debhelper (>= 9),
                dh-autoreconf,
-               cdbs (>= 0.4.90),
                autotools-dev,
                gnome-pkg-tools (>= 0.10),
                gettext,

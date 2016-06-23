@@ -1,18 +1,19 @@
 #!/usr/bin/make -f
 
-include /usr/share/cdbs/1/rules/autoreconf.mk
-include /usr/share/cdbs/1/rules/debhelper.mk
-include /usr/share/cdbs/1/rules/utils.mk
-include /usr/share/cdbs/1/class/gnome.mk
-include /usr/share/gnome-pkg-tools/1/rules/uploaders.mk
-include /usr/share/gnome-pkg-tools/1/rules/gnome-version.mk
 include /usr/share/gnome-pkg-tools/1/rules/gnome-get-source.mk
 
 GNOME_MODULE = libwnck
-LDFLAGS += -Wl,-z,defs -Wl,-O1 -Wl,--as-needed
-DEB_DH_MAKESHLIBS_ARGS_ALL += -V -- -c4
-DEB_DH_AUTORECONF_ARGS = --as-needed
 
-DEB_CONFIGURE_EXTRA_FLAGS += \
-	--libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH) \
-	--enable-gtk-doc
+export DEB_LDFLAGS_MAINT_APPEND = -Wl,-z,defs -Wl,-O1 -Wl,--as-needed
+
+%:
+	dh $@ --with autoreconf,gir,gnome
+
+override_dh_autoreconf:
+	dh_autoreconf --as-needed
+
+override_dh_auto_configure:
+	dh_auto_configure -- --enable-gtk-doc
+
+override_dh_makeshlibs:
+	dh_makeshlibs -V -- -c4
