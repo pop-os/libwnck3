@@ -1,0 +1,63 @@
+From 40856004e394305c880124f3d3b5f08fc1e9a16d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Olivier=20Cr=C3=AAte?= <olivier.crete@collabora.com>
+Date: Fri, 25 Nov 2016 15:25:40 -0500
+Subject: screen: Check for Wayland display
+
+The current code doesn't check hard enough and segfaults when
+starting d-feet.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=775116
+---
+ libwnck/screen.c | 11 ++++++++---
+ libwnck/util.c   |  5 ++++-
+ 2 files changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/libwnck/screen.c b/libwnck/screen.c
+index 1814ec0..4977017 100644
+--- a/libwnck/screen.c
++++ b/libwnck/screen.c
+@@ -625,15 +625,20 @@ _wnck_screen_get_existing (int number)
+  *
+  * Gets the default #WnckScreen on the default display.
+  *
+- * Return value: (transfer none): the default #WnckScreen. The returned
+- * #WnckScreen is owned by libwnck and must not be referenced or unreferenced.
++ * Return value: (transfer none) (nullable): the default #WnckScreen. The returned
++ * #WnckScreen is owned by libwnck and must not be referenced or unreferenced. This
++ * can return %NULL if not on X11.
+  **/
+ WnckScreen*
+ wnck_screen_get_default (void)
+ {
+   int default_screen;
++  Display *default_display = _wnck_get_default_display ();
+ 
+-  default_screen = DefaultScreen (_wnck_get_default_display ());
++  if (default_display == NULL)
++    return NULL;
++
++  default_screen = DefaultScreen (default_display);
+ 
+   return wnck_screen_get (default_screen);
+ }
+diff --git a/libwnck/util.c b/libwnck/util.c
+index 01901b7..bc235bb 100644
+--- a/libwnck/util.c
++++ b/libwnck/util.c
+@@ -808,9 +808,12 @@ _wnck_init (void)
+ Display *
+ _wnck_get_default_display (void)
+ {
++  GdkDisplay *display = gdk_display_get_default ();
+   /* FIXME: when we fix libwnck to not use the GDK default display, we will
+    * need to fix wnckprop accordingly. */
+-  return GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
++  if (!GDK_IS_X11_DISPLAY (display))
++    return NULL;
++  return GDK_DISPLAY_XDISPLAY (display);
+ }
+ 
+ /**
+-- 
+cgit v0.12
+

@@ -1,1 +1,2 @@
 #02_moveresize_static_gravity.patch
+screen-Check-for-Wayland-display.patch
