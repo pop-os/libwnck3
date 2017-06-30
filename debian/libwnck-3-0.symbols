@@ -1,5 +1,6 @@
 libwnck-3.so.0 libwnck-3-0 #MINVER#
 * Build-Depends-Package: libwnck-3-dev
+ libwnck_get_resource@Base 3.24.0
  wnck_action_menu_get_type@Base 2.91.6
  wnck_action_menu_new@Base 2.91.6
  wnck_application_get@Base 2.91.6
@@ -23,6 +24,13 @@ libwnck-3.so.0 libwnck-3-0 #MINVER#
  wnck_class_group_get_type@Base 2.91.6
  wnck_class_group_get_windows@Base 2.91.6
  wnck_client_type_get_type@Base 2.91.6
+ wnck_image_menu_item_get_type@Base 3.24.0
+ wnck_image_menu_item_make_label_bold@Base 3.24.0
+ wnck_image_menu_item_make_label_normal@Base 3.24.0
+ wnck_image_menu_item_new@Base 3.24.0
+ wnck_image_menu_item_new_with_label@Base 3.24.0
+ wnck_image_menu_item_set_image_from_icon_pixbuf@Base 3.24.0
+ wnck_image_menu_item_set_image_from_window@Base 3.24.0
  wnck_motion_direction_get_type@Base 2.91.6
  wnck_pager_accessible_factory_get_type@Base 2.91.6
  wnck_pager_accessible_factory_new@Base 2.91.6
@@ -30,12 +38,14 @@ libwnck-3.so.0 libwnck-3-0 #MINVER#
  wnck_pager_accessible_new@Base 2.91.6
  wnck_pager_display_mode_get_type@Base 2.91.6
  wnck_pager_get_type@Base 2.91.6
+ wnck_pager_get_wrap_on_scroll@Base 3.24.0
  wnck_pager_new@Base 2.91.6
  wnck_pager_set_display_mode@Base 2.91.6
  wnck_pager_set_n_rows@Base 2.91.6
  wnck_pager_set_orientation@Base 2.91.6
  wnck_pager_set_shadow_type@Base 2.91.6
  wnck_pager_set_show_all@Base 2.91.6
+ wnck_pager_set_wrap_on_scroll@Base 3.24.0
  wnck_pid_read_resource_usage@Base 2.91.6
  wnck_screen_calc_workspace_layout@Base 2.91.6
  wnck_screen_change_workspace_count@Base 2.91.6
@@ -70,6 +80,7 @@ libwnck-3.so.0 libwnck-3-0 #MINVER#
  wnck_set_default_icon_size@Base 3.4.7
  wnck_set_default_mini_icon_size@Base 3.4.7
  wnck_shutdown@Base 3.4.0
+ wnck_tasklist_get_scroll_enabled@Base 3.24.0
  wnck_tasklist_get_size_hint_list@Base 2.91.6
  wnck_tasklist_get_type@Base 2.91.6
  wnck_tasklist_grouping_type_get_type@Base 2.91.6
@@ -81,6 +92,7 @@ libwnck-3.so.0 libwnck-3-0 #MINVER#
  wnck_tasklist_set_include_all_workspaces@Base 2.91.6
  wnck_tasklist_set_middle_click_close@Base 3.4.7
  wnck_tasklist_set_orientation@Base 2.91.6
+ wnck_tasklist_set_scroll_enabled@Base 3.24.0
  wnck_tasklist_set_switch_workspace_on_unminimize@Base 2.91.6
  wnck_window_actions_get_type@Base 2.91.6
  wnck_window_activate@Base 2.91.6

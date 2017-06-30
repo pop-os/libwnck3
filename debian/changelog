@@ -5,6 +5,7 @@ libwnck3 (3.24.0-1) UNRELEASED; urgency=medium
   * Drop screen-Check-for-Wayland-display.patch, it was coming from upstream.
   * Bump libgtk-3-dev build-dependency to 3.22.0, following configure.ac.
   * Drop intltool build-dependency, no longer needed.
+  * Update debian/libwnck-3-0.symbols with new symbols.
 
  -- Dmitry Shachnev <mitya57@debian.org>  Fri, 30 Jun 2017 12:53:55 +0300
 
