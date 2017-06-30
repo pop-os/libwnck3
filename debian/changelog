@@ -1,4 +1,4 @@
-libwnck3 (3.24.0-1) UNRELEASED; urgency=medium
+libwnck3 (3.24.0-1) unstable; urgency=medium
 
   * New upstream release.
     - No longer uses deprecated gnome-common macros (closes: #829900).

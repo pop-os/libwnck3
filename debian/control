@@ -6,7 +6,7 @@ Source: libwnck3
 Section: libs
 Priority: optional
 Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
-Uploaders: Andreas Henriksson <andreas@fatal.se>, Dmitry Shachnev <mitya57@debian.org>, Iain Lane <laney@debian.org>, Martin Pitt <mpitt@debian.org>, Michael Biebl <biebl@debian.org>
+Uploaders: Andreas Henriksson <andreas@fatal.se>, Dmitry Shachnev <mitya57@debian.org>, Iain Lane <laney@debian.org>, Michael Biebl <biebl@debian.org>
 Standards-Version: 4.0.0
 Build-Depends: debhelper (>= 10),
                gnome-pkg-tools (>= 0.10),
