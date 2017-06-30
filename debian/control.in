@@ -6,8 +6,7 @@ Uploaders: @GNOME_TEAM@
 Standards-Version: 3.9.8
 Build-Depends: debhelper (>= 10),
                gnome-pkg-tools (>= 0.10),
-               gnome-common,
-               gettext,
+               gettext (>= 0.19.4),
                libstartup-notification0-dev (>= 0.7),
                docbook-xml,
                libx11-dev,
