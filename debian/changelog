@@ -1,3 +1,9 @@
+libwnck3 (3.24.1-1) UNRELEASED; urgency=medium
+
+  * New upstream release
+
+ -- Jeremy Bicha <jbicha@debian.org>  Thu, 31 Aug 2017 13:53:46 -0400
+
 libwnck3 (3.24.0-1) unstable; urgency=medium
 
   * New upstream release.
