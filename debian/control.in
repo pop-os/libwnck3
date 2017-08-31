@@ -3,7 +3,7 @@ Section: libs
 Priority: optional
 Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
 Uploaders: @GNOME_TEAM@
-Standards-Version: 4.0.0
+Standards-Version: 4.1.0
 Build-Depends: debhelper (>= 10),
                gnome-pkg-tools (>= 0.10),
                gettext (>= 0.19.4),

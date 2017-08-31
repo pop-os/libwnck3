@@ -1,6 +1,7 @@
 libwnck3 (3.24.1-1) UNRELEASED; urgency=medium
 
   * New upstream release
+  * Bump Standards-Version to 4.1.0
 
  -- Jeremy Bicha <jbicha@debian.org>  Thu, 31 Aug 2017 13:53:46 -0400
 
