@@ -1,4 +1,4 @@
-libwnck3 (3.24.1-2) UNRELEASED; urgency=medium
+libwnck3 (3.24.1-2) unstable; urgency=medium
 
   * Update Vcs fields for conversion to git
   * Add debian/gbp.conf
@@ -6,7 +6,7 @@ libwnck3 (3.24.1-2) UNRELEASED; urgency=medium
   * Bump debhelper compat to 11
   * Enable all hardening flags
 
- -- Jeremy Bicha <jbicha@debian.org>  Tue, 02 Jan 2018 10:29:19 -0500
+ -- Jeremy Bicha <jbicha@debian.org>  Tue, 02 Jan 2018 10:41:31 -0500
 
 libwnck3 (3.24.1-1) unstable; urgency=medium
 
