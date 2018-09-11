@@ -6,6 +6,7 @@ libwnck3 (3.30.0-1) UNRELEASED; urgency=medium
   [ Dmitry Shachnev ]
   * New upstream release.
   * Remove all trailing whitespace from debian/changelog.
+  * Drop obsolete Conflicts: with libwnck-dev.
 
  -- Jeremy Bicha <jbicha@debian.org>  Sun, 21 Jan 2018 09:36:09 -0500
 
