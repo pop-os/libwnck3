@@ -5,6 +5,7 @@ libwnck3 (3.30.0-1) UNRELEASED; urgency=medium
 
   [ Dmitry Shachnev ]
   * New upstream release.
+  * Remove all trailing whitespace from debian/changelog.
 
  -- Jeremy Bicha <jbicha@debian.org>  Sun, 21 Jan 2018 09:36:09 -0500
 
@@ -276,7 +277,7 @@ libwnck3 (2.91.90-1) experimental; urgency=low
 
   [ Josselin Mouette ]
   * New upstream pre-release.
-  * 01_tasklist_orientation.patch: update for new version, and fix 
+  * 01_tasklist_orientation.patch: update for new version, and fix
     header.
   * Update build-dependencies.
   * Move documentation back to /usr/share/gtk-doc.
@@ -292,7 +293,7 @@ libwnck (2.30.4-3) unstable; urgency=low
 
 libwnck (2.30.4-2) unstable; urgency=low
 
-  * 10_pager_multirow.patch: stolen upstream. Fix an unitialized value 
+  * 10_pager_multirow.patch: stolen upstream. Fix an unitialized value
     bug that causes issues with:
     + Multi-row pagers. Closes: #597540.
     + Vertical pagers. Closes: #598122.
@@ -302,7 +303,7 @@ libwnck (2.30.4-2) unstable; urgency=low
 
 libwnck (2.30.4-1) unstable; urgency=low
 
-  * 01_tasklist_orientation.patch: require to set a macro to use the 
+  * 01_tasklist_orientation.patch: require to set a macro to use the
     non-upstreamed API.
   * New upstream translation and bugfix release.
 
@@ -321,7 +322,7 @@ libwnck (2.30.3-1) unstable; urgency=low
 
 libwnck (2.30.0-4) unstable; urgency=low
 
-  * Build-depend on gir-repository-dev until GTK+ has its GI bindings 
+  * Build-depend on gir-repository-dev until GTK+ has its GI bindings
     built in the package.
 
  -- Josselin Mouette <joss@debian.org>  Wed, 14 Jul 2010 05:03:35 +0200
@@ -341,7 +342,7 @@ libwnck (2.30.0-3) unstable; urgency=low
   [ Josselin Mouette ]
   * Fix GIR package description.
   * Disable 01_vertical_panel.patch. Closes: #588721.
-  * 01_tasklist_orientation.patch: patch from Jean-Luc Porquet to fix 
+  * 01_tasklist_orientation.patch: patch from Jean-Luc Porquet to fix
     #524117 in a more elegant way by extending the API.
   * Bump shlibs accordingly.
 
@@ -350,7 +351,7 @@ libwnck (2.30.0-3) unstable; urgency=low
 libwnck (2.30.0-2) unstable; urgency=low
 
   * Switch to 3.0 (quilt) format.
-  * 01_vertical_panel.patch: patch from Carey Underwood and Leniviy to 
+  * 01_vertical_panel.patch: patch from Carey Underwood and Leniviy to
     fix lockups when the window list applet is on a vertical panel.
     Closes: #524117.
 
@@ -382,7 +383,7 @@ libwnck (2.28.0-1) unstable; urgency=low
 
 libwnck (2.26.1-1) unstable; urgency=low
 
-  * Build-depend on libglib2.0-doc and libgtk2.0-doc to ensure proper 
+  * Build-depend on libglib2.0-doc and libgtk2.0-doc to ensure proper
     xrefs.
   * New upstream release.
   * Bump build-dep on libglib2.0-dev.
@@ -568,7 +569,7 @@ libwnck (2.16.1-1) experimental; urgency=low
   * Update watch file.
   * rules: include clean-la.mk and gnome-version.mk.
   * Build-depend on gnome-pkg-tools 0.7.
-  * libwnck18 depends on libwnck-common with ${gnome:Version} 
+  * libwnck18 depends on libwnck-common with ${gnome:Version}
     restrictions.
 
  -- Josselin Mouette <joss@debian.org>  Sun, 19 Nov 2006 18:41:35 +0100
@@ -673,7 +674,7 @@ libwnck (2.10.2-1) unstable; urgency=low
   * Sebastien Bacher:
     * New upstream version.
   * Josselin Mouette:
-    * Don't overwrite DEB_CONFIGURE_SCRIPT_ENV completely.  
+    * Don't overwrite DEB_CONFIGURE_SCRIPT_ENV completely.
 
  -- Sebastien Bacher <seb128@debian.org>  Thu, 30 Jun 2005 19:15:56 +0200
 
@@ -699,7 +700,7 @@ libwnck (2.10.0-1) experimental; urgency=low
 libwnck (2.8.1-3) unstable; urgency=low
 
   * debian/patches/01_xinerama.patch:
-    - list all the applications in the windows list with xinerama 
+    - list all the applications in the windows list with xinerama
       (Closes: #274890).
 
  -- Sebastien Bacher <seb128@debian.org>  Wed, 24 Nov 2004 11:16:44 +0100
@@ -739,7 +740,7 @@ libwnck (2.7.92-1) experimental; urgency=low
   * [debian/rules] Generate and install the documentation.
   * [debian/libwnck-dev.doc-base] Register the documentation.
   * [debian/libwnck-dev.links] Make the documentation accessible to devhelp.
-  
+
  -- J.H.M. Dassen (Ray) <jdassen@debian.org>  Mon, 30 Aug 2004 17:48:05 +0200
 
 libwnck (2.7.91-1) experimental; urgency=low
@@ -758,9 +759,9 @@ libwnck (2.6.2-1) unstable; urgency=low
   * GNOME Team Upload.
   * New upstream release.
   * debian/libwnck4.shlibs:
-    - updated the shlibs to 2.6.2.    
+    - updated the shlibs to 2.6.2.
   * debian/rules:
-    - removed dh_makeshlibs call since there is a libwnck4.shlibs doing 
+    - removed dh_makeshlibs call since there is a libwnck4.shlibs doing
       this job.
 
  -- Sebastien Bacher <seb128@debian.org>  Thu, 17 Jun 2004 19:02:25 +0200
@@ -1030,5 +1031,3 @@ libwnck (0.1-1) unstable; urgency=low
   * Initial Release (Closes: #122958).
 
  -- Christian Marillat <marillat@debian.org>  Sat,  8 Dec 2001 18:55:53 +0100
-
-
