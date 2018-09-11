@@ -238,8 +238,7 @@ struct _WnckTasklistPrivate
 static GType wnck_task_get_type (void);
 
 G_DEFINE_TYPE (WnckTask, wnck_task, G_TYPE_OBJECT);
-G_DEFINE_TYPE (WnckTasklist, wnck_tasklist, GTK_TYPE_CONTAINER);
-#define WNCK_TASKLIST_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), WNCK_TYPE_TASKLIST, WnckTasklistPrivate))
+G_DEFINE_TYPE_WITH_PRIVATE (WnckTasklist, wnck_tasklist, GTK_TYPE_CONTAINER);
 
 static void wnck_task_finalize    (GObject       *object);
 
@@ -396,17 +395,18 @@ wnck_task_button_glow (WnckTask *task)
   if (task->button_glow == 0)
     {
       /* we're in "has stopped glowing" mode */
-      task->glow_factor = fade_opacity * 0.5;
+      task->glow_factor = (gdouble) fade_opacity * 0.5;
       stopped = TRUE;
     }
   else
     {
-      task->glow_factor = fade_opacity * (0.5 -
-                                          0.5 * cos ((now - task->glow_start_time) *
-                                                     M_PI * 2.0 / loop_time));
+      task->glow_factor =
+        (gdouble) fade_opacity * (0.5 -
+                                  0.5 * cos ((now - task->glow_start_time) *
+                                             M_PI * 2.0 / (gdouble) loop_time));
 
-      if (now - task->start_needs_attention > loop_time * 1.0 * fade_max_loops)
-        stopped = ABS (task->glow_factor - fade_opacity * 0.5) < 0.05;
+      if (now - task->start_needs_attention > (gdouble) loop_time * 1.0 * fade_max_loops)
+        stopped = ABS (task->glow_factor - (gdouble) fade_opacity * 0.5) < 0.05;
       else
         stopped = FALSE;
     }
@@ -579,7 +579,7 @@ wnck_tasklist_init (WnckTasklist *tasklist)
 
   gtk_widget_set_has_window (widget, FALSE);
 
-  tasklist->priv = WNCK_TASKLIST_GET_PRIVATE (tasklist);
+  tasklist->priv = wnck_tasklist_get_instance_private (tasklist);
 
   tasklist->priv->class_group_hash = g_hash_table_new (NULL, NULL);
   tasklist->priv->win_hash = g_hash_table_new (NULL, NULL);
@@ -610,8 +610,6 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
   GtkContainerClass *container_class = GTK_CONTAINER_CLASS (klass);
-
-  g_type_class_add_private (klass, sizeof (WnckTasklistPrivate));
 
   object_class->finalize = wnck_tasklist_finalize;
 
@@ -1692,6 +1690,13 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
 }
 
 static void
+foreach_tasklist (WnckTasklist *tasklist,
+                  gpointer      user_data)
+{
+  wnck_tasklist_update_lists (tasklist);
+}
+
+static void
 wnck_tasklist_realize (GtkWidget *widget)
 {
   WnckTasklist *tasklist;
@@ -1715,9 +1720,7 @@ wnck_tasklist_realize (GtkWidget *widget)
   (* GTK_WIDGET_CLASS (wnck_tasklist_parent_class)->realize) (widget);
 
   tasklist_instances = g_slist_append (tasklist_instances, tasklist);
-  g_slist_foreach (tasklist_instances,
-		   (GFunc) wnck_tasklist_update_lists,
-		   NULL);
+  g_slist_foreach (tasklist_instances, (GFunc) foreach_tasklist, NULL);
 
   wnck_tasklist_update_lists (tasklist);
 
@@ -1742,9 +1745,7 @@ wnck_tasklist_unrealize (GtkWidget *widget)
   (* GTK_WIDGET_CLASS (wnck_tasklist_parent_class)->unrealize) (widget);
 
   tasklist_instances = g_slist_remove (tasklist_instances, tasklist);
-  g_slist_foreach (tasklist_instances,
-		   (GFunc) wnck_tasklist_update_lists,
-		   NULL);
+  g_slist_foreach (tasklist_instances, (GFunc) foreach_tasklist, NULL);
 }
 
 static void

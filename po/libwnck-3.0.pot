@@ -1,15 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR libwnck contributors
+# Copyright (C) YEAR libwnck authors
 # This file is distributed under the same license as the libwnck package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck 3.24.0\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=libwnck&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-06-29 07:29+0800\n"
+"Project-Id-Version: libwnck 3.30.0\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/libwnck/issues\n"
+"POT-Creation-Date: 2018-09-11 06:53-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,43 +40,43 @@ msgstr ""
 msgid "Untitled application"
 msgstr ""
 
-#: libwnck/pager-accessible.c:340
+#: libwnck/pager-accessible.c:263
 msgid "Workspace Switcher"
 msgstr ""
 
-#: libwnck/pager-accessible.c:351
+#: libwnck/pager-accessible.c:274
 msgid "Tool to switch between workspaces"
 msgstr ""
 
-#: libwnck/pager-accessible.c:463
+#: libwnck/pager-accessible.c:379
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr ""
 
-#: libwnck/pager.c:2192
+#: libwnck/pager.c:2189
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr ""
 
-#: libwnck/pager.c:2195
+#: libwnck/pager.c:2192
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr ""
 
-#: libwnck/pager.c:2200
+#: libwnck/pager.c:2197
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr ""
 
-#: libwnck/selector.c:1092
+#: libwnck/selector.c:1091
 msgid "No Windows Open"
 msgstr ""
 
-#: libwnck/selector.c:1148
+#: libwnck/selector.c:1147
 msgid "Window Selector"
 msgstr ""
 
-#: libwnck/selector.c:1149
+#: libwnck/selector.c:1148
 msgid "Tool to switch between windows"
 msgstr ""
 
@@ -89,97 +88,97 @@ msgstr ""
 msgid "Tool to switch between visible windows"
 msgstr ""
 
-#: libwnck/tasklist.c:2985
+#: libwnck/tasklist.c:2986
 msgid "Mi_nimize All"
 msgstr ""
 
-#: libwnck/tasklist.c:2993
+#: libwnck/tasklist.c:2994
 msgid "Un_minimize All"
 msgstr ""
 
-#: libwnck/tasklist.c:3001
+#: libwnck/tasklist.c:3002
 msgid "Ma_ximize All"
 msgstr ""
 
-#: libwnck/tasklist.c:3009
+#: libwnck/tasklist.c:3010
 msgid "_Unmaximize All"
 msgstr ""
 
-#: libwnck/tasklist.c:3021
+#: libwnck/tasklist.c:3022
 msgid "_Close All"
 msgstr ""
 
-#: libwnck/window-action-menu.c:368
+#: libwnck/window-action-menu.c:367
 msgid "Unmi_nimize"
 msgstr ""
 
-#: libwnck/window-action-menu.c:374
+#: libwnck/window-action-menu.c:373
 msgid "Mi_nimize"
 msgstr ""
 
-#: libwnck/window-action-menu.c:381
+#: libwnck/window-action-menu.c:380
 msgid "Unma_ximize"
 msgstr ""
 
-#: libwnck/window-action-menu.c:387
+#: libwnck/window-action-menu.c:386
 msgid "Ma_ximize"
 msgstr ""
 
-#: libwnck/window-action-menu.c:693 libwnck/workspace.c:268
+#: libwnck/window-action-menu.c:692 libwnck/workspace.c:265
 #, c-format
 msgid "Workspace %d"
 msgstr ""
 
-#: libwnck/window-action-menu.c:702 libwnck/window-action-menu.c:848
+#: libwnck/window-action-menu.c:701 libwnck/window-action-menu.c:847
 msgid "Workspace 1_0"
 msgstr ""
 
-#: libwnck/window-action-menu.c:704 libwnck/window-action-menu.c:850
+#: libwnck/window-action-menu.c:703 libwnck/window-action-menu.c:849
 #, c-format
 msgid "Workspace %s%d"
 msgstr ""
 
-#: libwnck/window-action-menu.c:991
+#: libwnck/window-action-menu.c:990
 msgid "_Move"
 msgstr ""
 
-#: libwnck/window-action-menu.c:997
+#: libwnck/window-action-menu.c:996
 msgid "_Resize"
 msgstr ""
 
-#: libwnck/window-action-menu.c:1005
+#: libwnck/window-action-menu.c:1004
 msgid "Always On _Top"
 msgstr ""
 
-#: libwnck/window-action-menu.c:1013
+#: libwnck/window-action-menu.c:1012
 msgid "_Always on Visible Workspace"
 msgstr ""
 
-#: libwnck/window-action-menu.c:1018
+#: libwnck/window-action-menu.c:1017
 msgid "_Only on This Workspace"
 msgstr ""
 
-#: libwnck/window-action-menu.c:1025
+#: libwnck/window-action-menu.c:1024
 msgid "Move to Workspace _Left"
 msgstr ""
 
-#: libwnck/window-action-menu.c:1030
+#: libwnck/window-action-menu.c:1029
 msgid "Move to Workspace R_ight"
 msgstr ""
 
-#: libwnck/window-action-menu.c:1035
+#: libwnck/window-action-menu.c:1034
 msgid "Move to Workspace _Up"
 msgstr ""
 
-#: libwnck/window-action-menu.c:1040
+#: libwnck/window-action-menu.c:1039
 msgid "Move to Workspace _Down"
 msgstr ""
 
-#: libwnck/window-action-menu.c:1042
+#: libwnck/window-action-menu.c:1041
 msgid "Move to Another _Workspace"
 msgstr ""
 
-#: libwnck/window-action-menu.c:1062
+#: libwnck/window-action-menu.c:1061
 msgid "_Close"
 msgstr ""
 
@@ -1100,7 +1099,7 @@ msgstr ""
 msgid "Possible Actions: %s\n"
 msgstr ""
 
-#: libwnck/wnckprop.c:1866
+#: libwnck/wnckprop.c:1874
 msgid ""
 "Print or modify the properties of a screen/workspace/window, or interact "
 "with it, following the EWMH specification.\n"
@@ -1108,69 +1107,69 @@ msgid ""
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 msgstr ""
 
-#: libwnck/wnckprop.c:1876
+#: libwnck/wnckprop.c:1884
 msgid "Options to list windows or workspaces"
 msgstr ""
 
-#: libwnck/wnckprop.c:1877
+#: libwnck/wnckprop.c:1885
 msgid "Show options to list windows or workspaces"
 msgstr ""
 
-#: libwnck/wnckprop.c:1884
+#: libwnck/wnckprop.c:1892
 msgid "Options to modify properties of a window"
 msgstr ""
 
-#: libwnck/wnckprop.c:1885
+#: libwnck/wnckprop.c:1893
 msgid "Show options to modify properties of a window"
 msgstr ""
 
-#: libwnck/wnckprop.c:1892
+#: libwnck/wnckprop.c:1900
 msgid "Options to modify properties of a workspace"
 msgstr ""
 
-#: libwnck/wnckprop.c:1893
+#: libwnck/wnckprop.c:1901
 msgid "Show options to modify properties of a workspace"
 msgstr ""
 
-#: libwnck/wnckprop.c:1900
+#: libwnck/wnckprop.c:1908
 msgid "Options to modify properties of a screen"
 msgstr ""
 
-#: libwnck/wnckprop.c:1901
+#: libwnck/wnckprop.c:1909
 msgid "Show options to modify properties of a screen"
 msgstr ""
 
-#: libwnck/wnckprop.c:1912
+#: libwnck/wnckprop.c:1920
 #, c-format
 msgid "Error while parsing arguments: %s\n"
 msgstr ""
 
-#: libwnck/wnckprop.c:1935
+#: libwnck/wnckprop.c:1943
 #, c-format
 msgid "Cannot interact with screen %d: the screen does not exist\n"
 msgstr ""
 
-#: libwnck/wnckprop.c:1991
+#: libwnck/wnckprop.c:1999
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
 msgstr ""
 
 #. Translators: A class is like a "family". E.g., all gvim windows are
 #. * of the same class.
-#: libwnck/wnckprop.c:2015
+#: libwnck/wnckprop.c:2023
 #, c-format
 msgid ""
 "Cannot interact with class group \"%s\": the class group cannot be found\n"
 msgstr ""
 
-#: libwnck/wnckprop.c:2038
+#: libwnck/wnckprop.c:2046
 #, c-format
 msgid ""
 "Cannot interact with application having its group leader with XID %lu: the "
 "application cannot be found\n"
 msgstr ""
 
-#: libwnck/wnckprop.c:2061
+#: libwnck/wnckprop.c:2069
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr ""
