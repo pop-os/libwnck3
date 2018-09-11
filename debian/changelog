@@ -9,6 +9,7 @@ libwnck3 (3.30.0-1) UNRELEASED; urgency=medium
   * Drop obsolete Conflicts: with libwnck-dev.
   * Add Homepage field.
   * Drop the disabled 02_moveresize_static_gravity.patch completely.
+  * Install the upstream NEWS file.
 
  -- Jeremy Bicha <jbicha@debian.org>  Sun, 21 Jan 2018 09:36:09 -0500
 
