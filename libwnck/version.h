@@ -60,7 +60,7 @@
  *
  * Since: 3.0
  */
-#define WNCK_MINOR_VERSION (24)
+#define WNCK_MINOR_VERSION (30)
 
 /**
  * WNCK_MICRO_VERSION:
@@ -72,7 +72,7 @@
  *
  * Since: 3.0
  */
-#define WNCK_MICRO_VERSION (1)
+#define WNCK_MICRO_VERSION (0)
 
 /**
  * WNCK_CHECK_VERSION:
