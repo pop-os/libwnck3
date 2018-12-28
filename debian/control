@@ -22,7 +22,7 @@ Build-Depends: debhelper (>= 11),
                gtk-doc-tools (>= 1.9),
                libglib2.0-doc,
                libgtk-3-doc
-Standards-Version: 4.2.1
+Standards-Version: 4.3.0
 Vcs-Browser: https://salsa.debian.org/gnome-team/libwnck3
 Vcs-Git: https://salsa.debian.org/gnome-team/libwnck3.git
 Homepage: https://gitlab.gnome.org/GNOME/libwnck
