@@ -7,6 +7,7 @@ libwnck3 (3.32.0-1) UNRELEASED; urgency=medium
     - Remove libwnck_get_resource symbol, it was not part of the API.
   * Drop no longer needed dh_install override.
   * Do not use undefined ${shlibs:Depends} for gir1.2-wnck-3.0 package.
+  * Bump Standards-Version to 4.4.0, no changes needed.
 
  -- Dmitry Shachnev <mitya57@debian.org>  Sat, 13 Jul 2019 14:34:32 +0300
 
