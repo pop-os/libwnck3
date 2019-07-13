@@ -1,3 +1,9 @@
+libwnck3 (3.32.0-1) UNRELEASED; urgency=medium
+
+  * New upstream release.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sat, 13 Jul 2019 14:34:32 +0300
+
 libwnck3 (3.30.0-2) unstable; urgency=medium
 
   * Restore -Wl,-O1 to our LDFLAGS
