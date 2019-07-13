@@ -1,7 +1,7 @@
 AC_PREREQ(2.62)
 
 m4_define([wnck_major_version], [3])
-m4_define([wnck_minor_version], [30])
+m4_define([wnck_minor_version], [32])
 m4_define([wnck_micro_version], [0])
 m4_define([wnck_version],
           [wnck_major_version.wnck_minor_version.wnck_micro_version])
