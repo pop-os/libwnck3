@@ -70,9 +70,7 @@ Description: Window Navigator Construction Kit - common files
 Package: gir1.2-wnck-3.0
 Architecture: any
 Section: introspection
-Depends: ${gir:Depends},
-         ${misc:Depends},
-         ${shlibs:Depends}
+Depends: ${gir:Depends}, ${misc:Depends}
 Multi-Arch: same
 Description: GObject introspection data for the WNCK library
  This package contains introspection data for Window Navigator
