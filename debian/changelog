@@ -2,6 +2,9 @@ libwnck3 (3.32.0-1) UNRELEASED; urgency=medium
 
   * New upstream release.
   * Sort the build-dependencies list.
+  * Build using meson.
+    - Disable dh_autoreconf, it fails and is not needed with meson.
+    - Remove libwnck_get_resource symbol, it was not part of the API.
 
  -- Dmitry Shachnev <mitya57@debian.org>  Sat, 13 Jul 2019 14:34:32 +0300
 

@@ -1,6 +1,5 @@
 libwnck-3.so.0 libwnck-3-0 #MINVER#
 * Build-Depends-Package: libwnck-3-dev
- libwnck_get_resource@Base 3.24.0
  wnck_action_menu_get_type@Base 2.91.6
  wnck_action_menu_new@Base 2.91.6
  wnck_application_get@Base 2.91.6
