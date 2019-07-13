@@ -1,4 +1,4 @@
-libwnck3 (3.32.0-1) UNRELEASED; urgency=medium
+libwnck3 (3.32.0-1) unstable; urgency=medium
 
   * New upstream release.
   * Sort the build-dependencies list.
