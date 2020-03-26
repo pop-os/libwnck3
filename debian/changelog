@@ -1,6 +1,11 @@
-libwnck3 (3.36.0-1) UNRELEASED; urgency=medium
+libwnck3 (3.36.0-1) unstable; urgency=medium
 
   * New upstream release.
+  * Simplify debian/rules, drop --without autoreconf.
+  * Add two new symbols to debian/libwnck-3-0.symbols.
+  * Bump libglib2.0-dev dependency to 2.34, following upstream.
+  * Update to debhelper compat level 12, use the new syntax.
+  * Bump Standards-Version to 4.5.0, no changes needed.
 
  -- Dmitry Shachnev <mitya57@debian.org>  Thu, 26 Mar 2020 18:45:19 +0300
 
