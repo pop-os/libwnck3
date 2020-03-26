@@ -39,9 +39,11 @@ libwnck-3.so.0 libwnck-3-0 #MINVER#
  wnck_pager_get_type@Base 2.91.6
  wnck_pager_get_wrap_on_scroll@Base 3.24.0
  wnck_pager_new@Base 2.91.6
+ wnck_pager_scroll_mode_get_type@Base 3.36.0
  wnck_pager_set_display_mode@Base 2.91.6
  wnck_pager_set_n_rows@Base 2.91.6
  wnck_pager_set_orientation@Base 2.91.6
+ wnck_pager_set_scroll_mode@Base 3.36.0
  wnck_pager_set_shadow_type@Base 2.91.6
  wnck_pager_set_show_all@Base 2.91.6
  wnck_pager_set_wrap_on_scroll@Base 3.24.0
