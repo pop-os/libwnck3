@@ -1,6 +1,6 @@
 project('libwnck',
   'c',
-  version: '3.32.0',
+  version: '3.36.0',
   meson_version: '>= 0.50.0')
 
 LIBWNCK_SOVERSION = 0
@@ -40,10 +40,10 @@ XRES_PACKAGE = 'xres'
 
 pkg_deps = [
   {'name': 'cairo-xlib-xrender', 'required': false},
-  {'name': 'glib-2.0', 'version': '>= 2.32' },
+  {'name': 'glib-2.0', 'version': '>= 2.34' },
   {'name': 'gobject-2.0', 'version': '>= 2.13.0' },
   {'name': 'gtk+-3.0', 'version': '>= 3.22.0' },
-  {'name': STARTUP_NOTIFICATION_PACKAGE, 'version': '>= 0.4', 'required': get_option('startup_notification').enabled() },
+  {'name': STARTUP_NOTIFICATION_PACKAGE, 'version': '>= 0.4', 'required': get_option('startup_notification')},
   {'name': X11_PACKAGE },
   {'name': XRES_PACKAGE, 'required': false},
 ]
@@ -54,7 +54,7 @@ foreach p: pkg_deps
   dep = dependency(pkg, version: p.get('version', []), required: required)
   LIBWNCK_DEPS += dep
 
-  if not required and dep.found()
+  if dep.found()
     conf.set('HAVE_' + pkg.to_upper().underscorify(), 1)
   endif
 endforeach
@@ -72,11 +72,15 @@ configure_file(input: 'config.h.meson',
 pc_conf = configuration_data()
 pc_conf.set('prefix', get_option('prefix'))
 pc_conf.set('exec_prefix', '${prefix}')
-pc_conf.set('libdir', '${exec_prefix}/' + get_option('libdir'))
-pc_conf.set('includedir', '${prefix}/' + get_option('includedir'))
-pc_conf.set('STARTUP_NOTIFICATION_PACKAGE', STARTUP_NOTIFICATION_PACKAGE)
+pc_conf.set('libdir', '${exec_prefix}' / get_option('libdir'))
+pc_conf.set('includedir', '${prefix}' / get_option('includedir'))
+if conf.has('HAVE_' + STARTUP_NOTIFICATION_PACKAGE.to_upper().underscorify())
+  pc_conf.set('STARTUP_NOTIFICATION_PACKAGE', STARTUP_NOTIFICATION_PACKAGE)
+endif
 pc_conf.set('X11_PACKAGE', X11_PACKAGE)
-pc_conf.set('XRES_PACKAGE', XRES_PACKAGE)
+if conf.has('HAVE_' + XRES_PACKAGE.to_upper().underscorify())
+  pc_conf.set('XRES_PACKAGE', XRES_PACKAGE)
+endif
 pc_conf.set('VERSION', meson.project_version())
 
 foreach pc: [PACKAGE_NAME, PACKAGE_NAME + '-uninstalled']
