@@ -1,3 +1,9 @@
+libwnck3 (40.0-1) UNRELEASED; urgency=medium
+
+  * New upstream release.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Mon, 10 May 2021 20:35:20 +0300
+
 libwnck3 (3.36.0-1) unstable; urgency=medium
 
   * New upstream release.
