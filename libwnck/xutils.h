@@ -174,20 +174,14 @@ gboolean _wnck_read_icons (WnckScreen     *screen,
                            Window          xwindow,
                            WnckIconCache  *icon_cache,
                            GdkPixbuf     **iconp,
-                           int             ideal_width,
-                           int             ideal_height,
+                           int             ideal_size,
                            GdkPixbuf     **mini_iconp,
-                           int             ideal_mini_width,
-                           int             ideal_mini_height);
+                           int             ideal_mini_size);
 
-void _wnck_get_fallback_icons (GdkPixbuf     **iconp,
-                               int             ideal_width,
-                               int             ideal_height,
-                               GdkPixbuf     **mini_iconp,
-                               int             ideal_mini_width,
-                               int             ideal_mini_height);
-
-
+void _wnck_get_fallback_icons (GdkPixbuf **iconp,
+                               int         ideal_size,
+                               GdkPixbuf **mini_iconp,
+                               int         ideal_mini_size);
 
 void _wnck_get_window_geometry (Screen *screen,
 				Window  xwindow,
