@@ -6,7 +6,7 @@ Source: libwnck3
 Section: libs
 Priority: optional
 Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
-Uploaders: Dmitry Shachnev <mitya57@debian.org>, Iain Lane <laney@debian.org>, Jeremy Bicha <jbicha@debian.org>, Michael Biebl <biebl@debian.org>
+Uploaders: Dmitry Shachnev <mitya57@debian.org>, Jeremy Bicha <jbicha@debian.org>, Michael Biebl <biebl@debian.org>
 Build-Depends: debhelper-compat (= 12),
                docbook-xml,
                gettext (>= 0.19.4),
