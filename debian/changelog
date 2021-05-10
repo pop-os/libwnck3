@@ -1,6 +1,13 @@
-libwnck3 (40.0-1) UNRELEASED; urgency=medium
+libwnck3 (40.0-1) experimental; urgency=medium
 
   * New upstream release.
+  * Bump required libglib2.0-dev version to 2.44.
+  * Update debian/copyright.
+  * Add two new symbols to debian/libwnck-3-0.symbols.
+  * Stop limiting debian/watch to even numbers.
+  * Update to debhelper compat level 13.
+  * Stop explicitly adding -Wl,--as-needed in debian/rules.
+  * Bump Standards-Version to 4.5.1, no changes needed.
 
  -- Dmitry Shachnev <mitya57@debian.org>  Mon, 10 May 2021 20:35:20 +0300
 
