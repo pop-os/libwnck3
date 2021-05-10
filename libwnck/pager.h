@@ -88,12 +88,16 @@ typedef enum {
  * @WNCK_PAGER_SCROLL_1D: the #WnckPager will always cycle workspaces in a linear
  * manner, irrespective of how many rows are configured. (Hint: Better for mice)
  * Example cycling order with 2 rows and 4 workspaces: 1 2 3 4.
+ * @WNCK_PAGER_SCROLL_NONE: the #WnckPager will not cycle workspaces. Since 3.40.
  *
  * Mode defining in which order scrolling on a #WnckPager will cycle through workspaces.
+ *
+ * Since: 3.36
  */
 typedef enum {
   WNCK_PAGER_SCROLL_2D,
-  WNCK_PAGER_SCROLL_1D
+  WNCK_PAGER_SCROLL_1D,
+  WNCK_PAGER_SCROLL_NONE
 } WnckPagerScrollMode;
 
 GType      wnck_pager_get_type           (void) G_GNUC_CONST;

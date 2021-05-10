@@ -122,8 +122,6 @@ static void     wnck_pager_get_preferred_height_for_width (GtkWidget *widget,
                                                            int        width,
                                                            int       *minimum_height,
                                                            int       *natural_height);
-static void     wnck_pager_size_allocate (GtkWidget        *widget,
-                                          GtkAllocation    *allocation);
 static gboolean wnck_pager_draw          (GtkWidget        *widget,
                                           cairo_t          *cr);
 static gboolean wnck_pager_button_press  (GtkWidget        *widget,
@@ -219,7 +217,7 @@ wnck_pager_init (WnckPager *pager)
   pager->priv->wrap_on_scroll = FALSE;
 
   pager->priv->orientation = GTK_ORIENTATION_HORIZONTAL;
-  pager->priv->workspace_size = 48;
+  pager->priv->workspace_size = 16;
 
   for (i = 0; i < N_SCREEN_CONNECTIONS; i++)
     pager->priv->screen_connections[i] = 0;
@@ -249,7 +247,6 @@ wnck_pager_class_init (WnckPagerClass *klass)
   widget_class->get_preferred_width_for_height = wnck_pager_get_preferred_width_for_height;
   widget_class->get_preferred_height = wnck_pager_get_preferred_height;
   widget_class->get_preferred_height_for_width = wnck_pager_get_preferred_height_for_width;
-  widget_class->size_allocate = wnck_pager_size_allocate;
   widget_class->draw = wnck_pager_draw;
   widget_class->button_press_event = wnck_pager_button_press;
   widget_class->button_release_event = wnck_pager_button_release;
@@ -572,7 +569,7 @@ wnck_pager_get_preferred_width (GtkWidget *widget,
 
   wnck_pager_size_request (widget, &req);
 
-  *minimum_width = *natural_width = req.width;
+  *minimum_width = *natural_width = MAX (req.width, 0);
 }
 
 static void
@@ -622,7 +619,7 @@ wnck_pager_get_preferred_width_for_height (GtkWidget *widget,
                                                                 workspace_height);
 
   width += workspace_width * spaces_per_row + (spaces_per_row - 1);
-  *natural_width = *minimum_width = width;
+  *natural_width = *minimum_width = MAX (width, 0);
 }
 
 static void
@@ -634,7 +631,7 @@ wnck_pager_get_preferred_height (GtkWidget *widget,
 
   wnck_pager_size_request (widget, &req);
 
-  *minimum_height = *natural_height = req.height;
+  *minimum_height = *natural_height = MAX (req.height, 0);
 }
 
 static void
@@ -684,63 +681,7 @@ wnck_pager_get_preferred_height_for_width (GtkWidget *widget,
                                                                  workspace_width);
 
   height += workspace_height * spaces_per_row + (spaces_per_row - 1);
-  *natural_height = *minimum_height = height;
-}
-
-static gboolean
-_wnck_pager_queue_resize (gpointer data)
-{
-  gtk_widget_queue_resize (GTK_WIDGET (data));
-  return FALSE;
-}
-
-static void
-wnck_pager_size_allocate (GtkWidget      *widget,
-                          GtkAllocation  *allocation)
-{
-  WnckPager *pager;
-  int workspace_size;
-  GtkBorder padding;
-  int width;
-  int height;
-
-  pager = WNCK_PAGER (widget);
-
-  width = allocation->width;
-  height = allocation->height;
-
-  _wnck_pager_get_padding (pager, &padding);
-  width  -= padding.left + padding.right;
-  height -= padding.top + padding.bottom;
-
-  g_assert (pager->priv->n_rows > 0);
-
-  if (pager->priv->orientation == GTK_ORIENTATION_VERTICAL)
-    {
-      if (pager->priv->show_all_workspaces)
-	workspace_size = (width - (pager->priv->n_rows - 1))  / pager->priv->n_rows;
-      else
-	workspace_size = width;
-    }
-  else
-    {
-      if (pager->priv->show_all_workspaces)
-	workspace_size = (height - (pager->priv->n_rows - 1))/ pager->priv->n_rows;
-      else
-	workspace_size = height;
-    }
-
-  workspace_size = MAX (workspace_size, 1);
-
-  if (workspace_size != pager->priv->workspace_size)
-    {
-      pager->priv->workspace_size = workspace_size;
-      g_idle_add (_wnck_pager_queue_resize, pager);
-      return;
-    }
-
-  GTK_WIDGET_CLASS (wnck_pager_parent_class)->size_allocate (widget,
-                                                             allocation);
+  *natural_height = *minimum_height = MAX (height, 0);
 }
 
 static void
@@ -2042,6 +1983,8 @@ wnck_pager_scroll_event (GtkWidget      *widget,
     return FALSE;
   if (event->direction == GDK_SCROLL_SMOOTH)
     return FALSE;
+  if (pager->priv->scroll_mode == WNCK_PAGER_SCROLL_NONE)
+    return FALSE;
 
   absolute_direction = event->direction;
 
@@ -2435,6 +2378,8 @@ wnck_pager_set_display_mode (WnckPager            *pager,
  *
  * Sets @pager to react to input device scrolling in one of the
  * available scroll modes.
+ *
+ * Since: 3.36
  */
 void
 wnck_pager_set_scroll_mode (WnckPager           *pager,
