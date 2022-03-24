@@ -1,3 +1,4 @@
 version=4
-https://download.gnome.org/sources/libwnck/([\d\.]+)/ \
-	libwnck@ANY_VERSION@\.tar\.xz
+opts="searchmode=plain, uversionmangle=s/\.(alpha|beta|rc)/~$1/" \
+https://download.gnome.org/sources/libwnck/cache.json \
+	[\d.]+/libwnck-([\d.]+)@ARCHIVE_EXT@
