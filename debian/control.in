@@ -4,10 +4,10 @@ Priority: optional
 Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
 Uploaders: @GNOME_TEAM@
 Build-Depends: debhelper-compat (= 13),
+               dh-sequence-gir,
+               dh-sequence-gnome,
                docbook-xml,
                gettext (>= 0.19.4),
-               gnome-pkg-tools (>= 0.10),
-               gobject-introspection (>= 0.10),
                gtk-doc-tools (>= 1.9),
                libgirepository1.0-dev (>= 0.10),
                libglib2.0-dev (>= 2.44),
