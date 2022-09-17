@@ -39,6 +39,7 @@ headers = [
   'util.h',
   'window.h',
   'window-action-menu.h',
+  'wnck-handle.h',
   'workspace.h',
 ]
 
@@ -59,8 +60,12 @@ sources = [
   'window.c',
   'wnck-handle-private.h',
   'wnck-handle.c',
+  'wnck-icon-cache-private.h',
+  'wnck-icon-cache.c',
   'wnck-image-menu-item-private.h',
   'wnck-image-menu-item.c',
+  'wnck-resource-usage-private.h',
+  'wnck-resource-usage.c',
   'workspace.c',
   'xutils.c',
 ]
@@ -156,6 +161,7 @@ test_progs = [
   'test-pager',
   'test-urgent',
   'test-shutdown',
+  'test-icon-cache',
 ]
 
 foreach prog: progs + test_progs

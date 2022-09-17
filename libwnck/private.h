@@ -22,7 +22,6 @@
 #ifndef WNCK_PRIVATE_H
 #define WNCK_PRIVATE_H
 
-#include <config.h>
 #include "screen.h"
 #include "window.h"
 #include "workspace.h"
@@ -31,20 +30,12 @@
 #include "pager.h"
 #include "util.h"
 #include "wnck-handle-private.h"
-#ifdef HAVE_STARTUP_NOTIFICATION
-#include <libsn/sn.h>
-#endif
 
 G_BEGIN_DECLS
 
 #define WNCK_ACTIVATE_TIMEOUT 1
 
 WnckHandle *_wnck_get_handle (void);
-
-WnckClientType _wnck_get_client_type (void);
-
-gsize _wnck_get_default_icon_size (void);
-gsize _wnck_get_default_mini_icon_size (void);
 
 void _wnck_application_process_property_notify (WnckApplication *app,
                                                 XEvent          *xevent);
@@ -70,8 +61,6 @@ const char* _wnck_window_get_startup_id (WnckWindow *window);
 time_t      _wnck_window_get_needs_attention_time (WnckWindow *window);
 time_t      _wnck_window_or_transient_get_needs_attention_time (WnckWindow *window);
 
-void        _wnck_window_shutdown_all (void);
-
 WnckWorkspace* _wnck_workspace_create  (int            number, 
                                         WnckScreen    *screen);
 void           _wnck_workspace_destroy (WnckWorkspace *space);
@@ -96,7 +85,6 @@ WnckApplication* _wnck_application_create  (Window           xwindow,
                                             WnckScreen      *screen);
 void             _wnck_application_destroy (WnckApplication *app);
 void             _wnck_application_load_icons (WnckApplication *app);
-void             _wnck_application_shutdown_all (void);
 
 WnckClassGroup  *_wnck_class_group_create        (WnckScreen     *screen,
                                                   const char     *res_class);
@@ -106,15 +94,12 @@ void             _wnck_class_group_add_window    (WnckClassGroup *class_group,
                                                   WnckWindow     *window);
 void             _wnck_class_group_remove_window (WnckClassGroup *class_group,
                                                   WnckWindow     *window);
-void             _wnck_class_group_shutdown_all  (void);
 
 void _wnck_workspace_update_name (WnckWorkspace *workspace,
                                   const char    *name);
 void _wnck_screen_change_workspace_name (WnckScreen *screen,
                                          int         number,
                                          const char *name);
-
-void _wnck_screen_shutdown_all          (void);
 
 gboolean _wnck_workspace_set_geometry (WnckWorkspace *space, int w, int h);
 gboolean _wnck_workspace_set_viewport (WnckWorkspace *space, int x, int y);
@@ -124,14 +109,14 @@ Display *_wnck_get_default_display (void);
 
 #define WNCK_SCREEN_XSCREEN(screen) (_wnck_screen_get_xscreen (screen))
 
+void       _wnck_screen_construct      (WnckScreen *screen,
+                                        WnckHandle *handle,
+                                        Display    *display,
+                                        int         number);
+
+Window     _wnck_screen_get_xroot      (WnckScreen *screen);
 Screen    *_wnck_screen_get_xscreen    (WnckScreen *screen);
 GdkScreen *_wnck_screen_get_gdk_screen (WnckScreen *screen);
-
-#ifdef HAVE_STARTUP_NOTIFICATION
-SnDisplay* _wnck_screen_get_sn_display (WnckScreen *screen);
-#endif
-
-WnckScreen* _wnck_screen_get_existing (int number);
 
 void           _wnck_pager_activate_workspace   (WnckWorkspace *wspace,
                                                  guint32        timestamp);

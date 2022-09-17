@@ -87,9 +87,6 @@ int  _wnck_error_trap_pop  (Display *display);
 #define _wnck_atom_get(atom_name) gdk_x11_get_xatom_by_name (atom_name)
 #define _wnck_atom_name(atom)     gdk_x11_get_xatom_name (atom)
 
-void _wnck_event_filter_init (void);
-void _wnck_event_filter_shutdown (void);
-
 int   _wnck_xid_equal (gconstpointer v1,
                        gconstpointer v2);
 guint _wnck_xid_hash  (gconstpointer v);
@@ -159,25 +156,6 @@ void _wnck_keyboard_size (WnckScreen *screen,
 void _wnck_toggle_showing_desktop (Screen  *screen,
                                    gboolean show);
 
-typedef struct _WnckIconCache WnckIconCache;
-
-WnckIconCache *_wnck_icon_cache_new                  (void);
-void           _wnck_icon_cache_free                 (WnckIconCache *icon_cache);
-void           _wnck_icon_cache_property_changed     (WnckIconCache *icon_cache,
-                                                      Atom           atom);
-gboolean       _wnck_icon_cache_get_icon_invalidated (WnckIconCache *icon_cache);
-void           _wnck_icon_cache_set_want_fallback    (WnckIconCache *icon_cache,
-                                                      gboolean       setting);
-gboolean       _wnck_icon_cache_get_is_fallback      (WnckIconCache *icon_cache);
-
-gboolean _wnck_read_icons (WnckScreen     *screen,
-                           Window          xwindow,
-                           WnckIconCache  *icon_cache,
-                           GdkPixbuf     **iconp,
-                           int             ideal_size,
-                           GdkPixbuf     **mini_iconp,
-                           int             ideal_mini_size);
-
 void _wnck_get_fallback_icons (GdkPixbuf **iconp,
                                int         ideal_size,
                                GdkPixbuf **mini_iconp,
@@ -212,6 +190,9 @@ void _wnck_set_icon_geometry  (Screen *screen,
 void _wnck_set_desktop_layout (Screen *xscreen,
                                int     rows,
                                int     columns);
+
+cairo_surface_t *_wnck_cairo_surface_get_from_pixmap (Screen *screen,
+                                                      Pixmap  xpixmap);
 
 GdkPixbuf* _wnck_gdk_pixbuf_get_from_pixmap (Screen *screen,
                                              Pixmap  xpixmap);
