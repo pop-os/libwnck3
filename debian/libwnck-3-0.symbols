@@ -24,7 +24,16 @@ libwnck-3.so.0 libwnck-3-0 #MINVER#
  wnck_class_group_get_type@Base 2.91.6
  wnck_class_group_get_windows@Base 2.91.6
  wnck_client_type_get_type@Base 2.91.6
+ wnck_handle_get_application@Base 43.0
+ wnck_handle_get_class_group@Base 43.0
+ wnck_handle_get_default_screen@Base 43.0
+ wnck_handle_get_screen@Base 43.0
+ wnck_handle_get_screen_for_root@Base 43.0
  wnck_handle_get_type@Base 40.0
+ wnck_handle_get_window@Base 43.0
+ wnck_handle_new@Base 43.0
+ wnck_handle_set_default_icon_size@Base 43.0
+ wnck_handle_set_default_mini_icon_size@Base 43.0
  wnck_image_menu_item_get_type@Base 3.24.0
  wnck_image_menu_item_make_label_bold@Base 3.24.0
  wnck_image_menu_item_make_label_normal@Base 3.24.0
@@ -41,6 +50,7 @@ libwnck-3.so.0 libwnck-3-0 #MINVER#
  wnck_pager_get_type@Base 2.91.6
  wnck_pager_get_wrap_on_scroll@Base 3.24.0
  wnck_pager_new@Base 2.91.6
+ wnck_pager_new_with_handle@Base 43.0
  wnck_pager_scroll_mode_get_type@Base 3.36.0
  wnck_pager_set_display_mode@Base 2.91.6
  wnck_pager_set_n_rows@Base 2.91.6
@@ -60,6 +70,7 @@ libwnck-3.so.0 libwnck-3-0 #MINVER#
  wnck_screen_get_background_pixmap@Base 2.91.6
  wnck_screen_get_default@Base 2.91.6
  wnck_screen_get_for_root@Base 2.91.6
+ wnck_screen_get_handle@Base 43.0
  wnck_screen_get_height@Base 2.91.6
  wnck_screen_get_number@Base 2.91.6
  wnck_screen_get_previously_active_window@Base 2.91.6
@@ -79,6 +90,7 @@ libwnck-3.so.0 libwnck-3-0 #MINVER#
  wnck_screen_try_set_workspace_layout@Base 2.91.6
  wnck_selector_get_type@Base 2.91.6
  wnck_selector_new@Base 2.91.6
+ wnck_selector_new_with_handle@Base 43.0
  wnck_set_client_type@Base 2.91.6
  wnck_set_default_icon_size@Base 3.4.7
  wnck_set_default_mini_icon_size@Base 3.4.7
@@ -88,6 +100,7 @@ libwnck-3.so.0 libwnck-3-0 #MINVER#
  wnck_tasklist_get_type@Base 2.91.6
  wnck_tasklist_grouping_type_get_type@Base 2.91.6
  wnck_tasklist_new@Base 2.91.6
+ wnck_tasklist_new_with_handle@Base 43.0
  wnck_tasklist_set_button_relief@Base 2.91.6
  wnck_tasklist_set_grouping@Base 2.91.6
  wnck_tasklist_set_grouping_limit@Base 2.91.6
