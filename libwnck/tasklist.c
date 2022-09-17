@@ -36,6 +36,10 @@
 #include "xutils.h"
 #include "private.h"
 
+#ifdef HAVE_STARTUP_NOTIFICATION
+#include <libsn/sn.h>
+#endif
+
 /**
  * SECTION:tasklist
  * @short_description: a tasklist widget, showing the list of windows as a list
@@ -92,7 +96,6 @@ typedef struct _WnckTaskClass   WnckTaskClass;
 
 #define DEFAULT_GROUPING_LIMIT 80
 
-#define MINI_ICON_SIZE _wnck_get_default_mini_icon_size ()
 #define TASKLIST_BUTTON_PADDING 4
 #define TASKLIST_TEXT_MAX_WIDTH 25 /* maximum width in characters */
 
@@ -107,6 +110,8 @@ typedef struct _WnckTaskClass   WnckTaskClass;
 struct _WnckButton
 {
   GtkToggleButton  parent;
+
+  WnckHandle      *handle;
 
   GtkWidget       *image;
   gboolean         show_image;
@@ -187,6 +192,8 @@ typedef struct _skipped_window
 
 struct _WnckTasklistPrivate
 {
+  WnckHandle *handle;
+
   WnckScreen *screen;
 
   WnckTask *active_task; /* NULL if active window not in tasklist */
@@ -229,6 +236,7 @@ struct _WnckTasklistPrivate
   GDestroyNotify free_icon_loader_data;
 
 #ifdef HAVE_STARTUP_NOTIFICATION
+  SnDisplay *sn_display;
   SnMonitorContext *sn_context;
   guint startup_sequence_timeout;
 #endif
@@ -242,6 +250,17 @@ struct _WnckTasklistPrivate
 
   gboolean scroll_enabled;
 };
+
+enum
+{
+  PROP_0,
+
+  PROP_HANDLE,
+
+  LAST_PROP
+};
+
+static GParamSpec *tasklist_properties[LAST_PROP] = { NULL };
 
 static GType wnck_task_get_type (void);
 
@@ -480,7 +499,7 @@ wnck_button_size_allocate (GtkWidget     *widget,
   min_width = get_css_width (widget);
   min_width += get_css_width (gtk_bin_get_child (GTK_BIN (widget)));
 
-  min_image_width = MINI_ICON_SIZE +
+  min_image_width = _wnck_handle_get_default_mini_icon_size (self->handle) +
                     min_width +
                     2 * TASKLIST_BUTTON_PADDING;
 
@@ -608,6 +627,13 @@ static GtkWidget *
 wnck_button_new (void)
 {
   return g_object_new (WNCK_TYPE_BUTTON, NULL);
+}
+
+static void
+wnck_button_set_handle (WnckButton *self,
+                        WnckHandle *handle)
+{
+  self->handle = handle;
 }
 
 static void
@@ -837,6 +863,34 @@ wnck_task_finalize (GObject *object)
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
+static GdkFilterReturn
+event_filter_cb (GdkXEvent *gdkxevent,
+                 GdkEvent  *event,
+                 gpointer   data)
+{
+#ifdef HAVE_STARTUP_NOTIFICATION
+  WnckTasklist *self;
+  XEvent *xevent = gdkxevent;
+
+  self = WNCK_TASKLIST (data);
+
+  switch (xevent->type)
+    {
+      case ClientMessage:
+        /* We're cheating as officially libsn requires
+         * us to send all events through sn_display_process_event
+         */
+        sn_display_process_event (self->priv->sn_display, xevent);
+        break;
+
+      default:
+        break;
+    }
+#endif /* HAVE_STARTUP_NOTIFICATION */
+
+  return GDK_FILTER_CONTINUE;
+}
+
 static void
 wnck_tasklist_init (WnckTasklist *tasklist)
 {
@@ -865,6 +919,8 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   atk_object_set_name (atk_obj, _("Window List"));
   atk_object_set_description (atk_obj, _("Tool to switch between visible windows"));
 
+  gdk_window_add_filter (NULL, event_filter_cb, tasklist);
+
 #if 0
   /* This doesn't work because, and I think this is because we have no window;
    * therefore, we use the scroll events on task buttons instead */
@@ -885,6 +941,78 @@ wnck_tasklist_get_request_mode (GtkWidget *widget)
   return GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT;
 }
 
+#ifdef HAVE_STARTUP_NOTIFICATION
+static gboolean
+sn_utf8_validator (const char *str,
+                   int         max_len)
+{
+  return g_utf8_validate (str, max_len, NULL);
+}
+#endif /* HAVE_STARTUP_NOTIFICATION */
+
+static void
+wnck_tasklist_get_property (GObject    *object,
+                            guint       property_id,
+                            GValue     *value,
+                            GParamSpec *pspec)
+{
+  WnckTasklist *self;
+
+  self = WNCK_TASKLIST (object);
+
+  switch (property_id)
+    {
+      case PROP_HANDLE:
+        g_value_set_object (value, self->priv->handle);
+        break;
+
+      default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+        break;
+    }
+}
+
+static void
+wnck_tasklist_set_property (GObject      *object,
+                            guint         property_id,
+                            const GValue *value,
+                            GParamSpec   *pspec)
+{
+  WnckTasklist *self;
+
+  self = WNCK_TASKLIST (object);
+
+  switch (property_id)
+    {
+      case PROP_HANDLE:
+        g_assert (self->priv->handle == NULL);
+        self->priv->handle = g_value_dup_object (value);
+        break;
+
+      default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+        break;
+    }
+}
+
+static void
+install_properties (GObjectClass *object_class)
+{
+  tasklist_properties[PROP_HANDLE] =
+    g_param_spec_object ("handle",
+                         "handle",
+                         "handle",
+                         WNCK_TYPE_HANDLE,
+                         G_PARAM_CONSTRUCT_ONLY |
+                         G_PARAM_READWRITE |
+                         G_PARAM_EXPLICIT_NOTIFY |
+                         G_PARAM_STATIC_STRINGS);
+
+  g_object_class_install_properties (object_class,
+                                     LAST_PROP,
+                                     tasklist_properties);
+}
+
 static void
 wnck_tasklist_class_init (WnckTasklistClass *klass)
 {
@@ -893,6 +1021,8 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
   GtkContainerClass *container_class = GTK_CONTAINER_CLASS (klass);
 
   object_class->finalize = wnck_tasklist_finalize;
+  object_class->get_property = wnck_tasklist_get_property;
+  object_class->set_property = wnck_tasklist_set_property;
 
   widget_class->get_request_mode = wnck_tasklist_get_request_mode;
   widget_class->get_preferred_width = wnck_tasklist_get_preferred_width;
@@ -1007,6 +1137,12 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
                   0, NULL, NULL, NULL,
                   G_TYPE_NONE, 1,
                   G_TYPE_POINTER);
+
+  install_properties (object_class);
+
+#ifdef HAVE_STARTUP_NOTIFICATION
+  sn_set_utf8_validator (sn_utf8_validator);
+#endif /* HAVE_STARTUP_NOTIFICATION */
 }
 
 static void
@@ -1044,6 +1180,8 @@ wnck_tasklist_finalize (GObject *object)
   g_assert (tasklist->priv->startup_sequences == NULL);
   /* wnck_tasklist_free_tasks (tasklist); */
 
+  gdk_window_remove_filter (NULL, event_filter_cb, tasklist);
+
   if (tasklist->priv->skipped_windows)
     {
       wnck_tasklist_free_skipped_windows (tasklist);
@@ -1076,6 +1214,8 @@ wnck_tasklist_finalize (GObject *object)
     (* tasklist->priv->free_icon_loader_data) (tasklist->priv->icon_loader_data);
   tasklist->priv->free_icon_loader_data = NULL;
   tasklist->priv->icon_loader_data = NULL;
+
+  g_clear_object (&tasklist->priv->handle);
 
   G_OBJECT_CLASS (wnck_tasklist_parent_class)->finalize (object);
 }
@@ -1765,12 +1905,14 @@ get_n_buttons (WnckTasklist *self)
 }
 
 static void
-get_minimum_button_size (int *minimum_width,
-                         int *minimum_height)
+get_minimum_button_size (WnckHandle *handle,
+                         int        *minimum_width,
+                         int        *minimum_height)
 {
   GtkWidget *button;
 
   button = wnck_button_new ();
+  wnck_button_set_handle (WNCK_BUTTON (button), handle);
   gtk_widget_show (button);
 
   if (minimum_width != NULL)
@@ -1807,7 +1949,7 @@ get_preferred_size (WnckTasklist   *self,
     {
       int min_button_width;
 
-      get_minimum_button_size (&min_button_width, NULL);
+      get_minimum_button_size (self->priv->handle, &min_button_width, NULL);
 
       if (self->priv->orientation == GTK_ORIENTATION_HORIZONTAL)
         {
@@ -2137,21 +2279,48 @@ foreach_tasklist (WnckTasklist *tasklist,
   wnck_tasklist_update_lists (tasklist);
 }
 
+#ifdef HAVE_STARTUP_NOTIFICATION
+static void
+sn_error_trap_push (SnDisplay *display,
+                    Display   *xdisplay)
+{
+  _wnck_error_trap_push (xdisplay);
+}
+
+static void
+sn_error_trap_pop (SnDisplay *display,
+                   Display   *xdisplay)
+{
+  _wnck_error_trap_pop (xdisplay);
+}
+#endif /* HAVE_STARTUP_NOTIFICATION */
+
 static void
 wnck_tasklist_realize (GtkWidget *widget)
 {
   WnckTasklist *tasklist;
   GdkScreen *gdkscreen;
+  GdkDisplay *gdkdisplay;
+  int screen_number;
 
   tasklist = WNCK_TASKLIST (widget);
 
   gdkscreen = gtk_widget_get_screen (widget);
-  tasklist->priv->screen = wnck_screen_get (gdk_x11_screen_get_screen_number (gdkscreen));
+  gdkdisplay = gdk_screen_get_display (gdkscreen);
+  screen_number = gdk_x11_screen_get_screen_number (gdkscreen);
+
+  tasklist->priv->screen = wnck_handle_get_screen (tasklist->priv->handle,
+                                                   screen_number);
+
   g_assert (tasklist->priv->screen != NULL);
 
 #ifdef HAVE_STARTUP_NOTIFICATION
+  tasklist->priv->sn_display = sn_display_new (gdk_x11_display_get_xdisplay (gdkdisplay),
+                                               sn_error_trap_push,
+                                               sn_error_trap_pop);
+
   tasklist->priv->sn_context =
-    sn_monitor_context_new (_wnck_screen_get_sn_display (tasklist->priv->screen),
+    sn_monitor_context_new (tasklist->priv->sn_display,
                             wnck_screen_get_number (tasklist->priv->screen),
                             wnck_tasklist_sn_event,
                             tasklist,
@@ -2179,6 +2348,9 @@ wnck_tasklist_unrealize (GtkWidget *widget)
   tasklist->priv->screen = NULL;
 
 #ifdef HAVE_STARTUP_NOTIFICATION
+  sn_display_unref (tasklist->priv->sn_display);
+  tasklist->priv->sn_display = NULL;
+
   sn_monitor_context_unref (tasklist->priv->sn_context);
   tasklist->priv->sn_context = NULL;
 #endif
@@ -2540,9 +2712,32 @@ wnck_tasklist_new (void)
 {
   WnckTasklist *tasklist;
 
-  tasklist = g_object_new (WNCK_TYPE_TASKLIST, NULL);
+  tasklist = g_object_new (WNCK_TYPE_TASKLIST,
+                           "handle", _wnck_get_handle (),
+                           NULL);
 
   return GTK_WIDGET (tasklist);
+}
+
+/**
+ * wnck_tasklist_new_with_handle:
+ * @handle: a #WnckHandle
+ *
+ * Creates a new #WnckTasklist. The #WnckTasklist will list #WnckWindow of the
+ * #WnckScreen it is on.
+ *
+ * Returns: a newly created #WnckTasklist.
+ */
+GtkWidget *
+wnck_tasklist_new_with_handle (WnckHandle *handle)
+{
+  WnckTasklist *self;
+
+  self = g_object_new (WNCK_TYPE_TASKLIST,
+                       "handle", handle,
+                       NULL);
+
+  return GTK_WIDGET (self);
 }
 
 static void
@@ -3610,7 +3805,9 @@ wnck_dimm_icon (GdkPixbuf *pixbuf)
 }
 
 static GdkPixbuf *
-wnck_task_scale_icon (GdkPixbuf *orig, gboolean minimized)
+wnck_task_scale_icon (gsize      mini_icon_size,
+                      GdkPixbuf *orig,
+                      gboolean   minimized)
 {
   int w, h;
   GdkPixbuf *pixbuf;
@@ -3621,7 +3818,7 @@ wnck_task_scale_icon (GdkPixbuf *orig, gboolean minimized)
   w = gdk_pixbuf_get_width (orig);
   h = gdk_pixbuf_get_height (orig);
 
-  if (h != (int) MINI_ICON_SIZE ||
+  if (h != (int) mini_icon_size ||
       !gdk_pixbuf_get_has_alpha (orig))
     {
       double scale;
@@ -3629,10 +3826,10 @@ wnck_task_scale_icon (GdkPixbuf *orig, gboolean minimized)
       pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB,
 			       TRUE,
 			       8,
-			       MINI_ICON_SIZE * w / (double) h,
-			       MINI_ICON_SIZE);
+			       mini_icon_size * w / (double) h,
+			       mini_icon_size);
 
-      scale = MINI_ICON_SIZE / (double) gdk_pixbuf_get_height (orig);
+      scale = mini_icon_size / (double) gdk_pixbuf_get_height (orig);
 
       gdk_pixbuf_scale (orig,
 			pixbuf,
@@ -3666,21 +3863,28 @@ wnck_task_get_icon (WnckTask *task)
 {
   WnckWindowState state;
   GdkPixbuf *pixbuf;
+  WnckHandle *handle;
+  gsize mini_icon_size;
 
   pixbuf = NULL;
+
+  handle = task->tasklist->priv->handle;
+  mini_icon_size = _wnck_handle_get_default_mini_icon_size (handle);
 
   switch (task->type)
     {
     case WNCK_TASK_CLASS_GROUP:
-      pixbuf = wnck_task_scale_icon (wnck_class_group_get_mini_icon (task->class_group),
-				     FALSE);
+      pixbuf = wnck_task_scale_icon (mini_icon_size,
+                                     wnck_class_group_get_mini_icon (task->class_group),
+                                     FALSE);
       break;
 
     case WNCK_TASK_WINDOW:
       state = wnck_window_get_state (task->window);
 
-      pixbuf =  wnck_task_scale_icon (wnck_window_get_mini_icon (task->window),
-				      state & WNCK_WINDOW_STATE_MINIMIZED);
+      pixbuf = wnck_task_scale_icon (mini_icon_size,
+                                     wnck_window_get_mini_icon (task->window),
+                                     state & WNCK_WINDOW_STATE_MINIMIZED);
       break;
 
     case WNCK_TASK_STARTUP_SEQUENCE:
@@ -3695,13 +3899,13 @@ wnck_task_get_icon (WnckTask *task)
               GdkPixbuf *loaded;
 
               loaded =  (* task->tasklist->priv->icon_loader) (icon,
-                                                               MINI_ICON_SIZE,
+                                                               mini_icon_size,
                                                                0,
                                                                task->tasklist->priv->icon_loader_data);
 
               if (loaded != NULL)
                 {
-                  pixbuf = wnck_task_scale_icon (loaded, FALSE);
+                  pixbuf = wnck_task_scale_icon (mini_icon_size, loaded, FALSE);
                   g_object_unref (G_OBJECT (loaded));
                 }
             }
@@ -3710,7 +3914,7 @@ wnck_task_get_icon (WnckTask *task)
       if (pixbuf == NULL)
         {
           _wnck_get_fallback_icons (NULL, 0,
-                                    &pixbuf, MINI_ICON_SIZE);
+                                    &pixbuf, mini_icon_size);
         }
 #endif
       break;
@@ -3913,7 +4117,7 @@ wnck_task_motion_timeout (gpointer data)
    * There should only be *one* activate call.
    */
   ws = wnck_window_get_workspace (task->window);
-  if (ws && ws != wnck_screen_get_active_workspace (wnck_screen_get_default ()))
+  if (ws && ws != wnck_screen_get_active_workspace (task->tasklist->priv->screen))
   {
     wnck_workspace_activate (ws, task->dnd_timestamp);
   }
@@ -4251,6 +4455,8 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
   };
 
   task->button = wnck_button_new ();
+  wnck_button_set_handle (WNCK_BUTTON (task->button),
+                          task->tasklist->priv->handle);
 
   gtk_button_set_relief (GTK_BUTTON (task->button), relief);
 

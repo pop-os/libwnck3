@@ -1,6 +1,6 @@
 project('libwnck',
   'c',
-  version: '40.1',
+  version: '43.0',
   meson_version: '>= 0.50.0')
 
 LIBWNCK_SOVERSION = 0
