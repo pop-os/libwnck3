@@ -1,3 +1,10 @@
+libwnck3 (43.0-2) unstable; urgency=medium
+
+  * Add a patch to fix segfault in invalidate_icons. (Closes: #1020262)
+    (LP: #1990263)
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Fri, 23 Sep 2022 00:16:49 +0300
+
 libwnck3 (43.0-1) unstable; urgency=medium
 
   * New upstream release.
