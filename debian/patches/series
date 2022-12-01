@@ -1,1 +1,5 @@
 handle-avoid-segfault-in-invalidate_icons.patch
+handle-init-XRes-extension.patch
+xutils-move-XRes-code-to-separate-function.patch
+xutils-use-WnckScreen-in-_wnck_get_pid.patch
+xutils-check-if-XRes-is-available-before-using-XResQueryC.patch

@@ -1,0 +1,24 @@
+From: Alberts Muktupāvels <alberts.muktupavels@gmail.com>
+Date: Fri, 30 Sep 2022 18:43:07 +0300
+Subject: xutils: check if XRes is available before using XResQueryClientIds
+
+https://gitlab.gnome.org/GNOME/libwnck/-/issues/154
+(cherry picked from commit dde756bc7788488f07b674cbe218943a62eb82e6)
+---
+ libwnck/xutils.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/libwnck/xutils.c b/libwnck/xutils.c
+index 08be8aa..91c2d50 100644
+--- a/libwnck/xutils.c
++++ b/libwnck/xutils.c
+@@ -1156,6 +1156,9 @@ xres_get_pid (WnckScreen *screen,
+   long client_id_count = 0;
+   XResClientIdValue *client_ids = NULL;
+ 
++  if (!_wnck_handle_has_xres (wnck_screen_get_handle (screen)))
++    return -1;
++
+   xscreen = _wnck_screen_get_xscreen (screen);
+ 
+   client_spec.client = xwindow;
