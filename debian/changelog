@@ -1,3 +1,10 @@
+libwnck3 (43.0-3) unstable; urgency=medium
+
+  * Backport four upstream commits to fix Xfce X2Go sessions.
+    (Closes: #1021685, #1025174)
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Thu, 01 Dec 2022 11:52:46 +0300
+
 libwnck3 (43.0-2) unstable; urgency=medium
 
   * Add a patch to fix segfault in invalidate_icons. (Closes: #1020262)
