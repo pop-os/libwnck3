@@ -1,6 +1,24 @@
-libwnck3 (43.1-1) UNRELEASED; urgency=medium
+libwnck3 (43.1-1) unstable; urgency=medium
 
+  [ Dmitry Shachnev ]
   * New upstream release.
+  * Update Contact to the current maintainer.
+  * Stop using debian/control.in and dh_gnome_clean.
+  * Bump libxres-dev build-dependency to 1.2.
+  * Drop all patches, included in the new release.
+  * Add two new symbols to debian/libwnck-3-0.symbols.
+  * Bump Standards-Version to 4.7.0, no changes needed.
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Contact,
+    Repository-Browse.
+  * Set field Upstream-Contact in debian/copyright.
+  * Set upstream metadata fields: Repository.
+  * Remove obsolete field Contact from debian/upstream/metadata (already
+    present in machine-readable debian/copyright).
+
+  [ Amin Bandali ]
+  * Change debian-branch from debian/master to debian/latest.
 
  -- Dmitry Shachnev <mitya57@debian.org>  Sun, 06 Oct 2024 10:40:54 +0300
 
