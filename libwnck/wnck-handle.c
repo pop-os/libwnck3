@@ -29,6 +29,11 @@
 #include "config.h"
 #include "wnck-handle-private.h"
 
+#include <X11/Xlib.h>
+#ifdef HAVE_XRES
+#include <X11/extensions/XRes.h>
+#endif
+
 #include "private.h"
 #include "screen.h"
 #include "window.h"
@@ -42,6 +47,8 @@ struct _WnckHandle
   WnckScreen     **screens;
 
   WnckClientType   client_type;
+
+  gboolean         have_xres;
 
   gsize            default_icon_size;
   gsize            default_mini_icon_size;
@@ -69,6 +76,9 @@ invalidate_icons (WnckHandle *self)
 {
   Display *xdisplay;
   int i;
+
+  if (self->screens == NULL)
+    return;
 
   xdisplay = _wnck_get_default_display ();
 
@@ -162,6 +172,44 @@ filter_func (GdkXEvent *gdkxevent,
     }
 
   return GDK_FILTER_CONTINUE;
+}
+
+static void
+init_xres (WnckHandle *self)
+{
+#ifdef HAVE_XRES
+  Display *xdisplay;
+  int event_base;
+  int error_base;
+  int major;
+  int minor;
+
+  xdisplay = _wnck_get_default_display ();
+
+  if (xdisplay == NULL)
+    return;
+
+  event_base = error_base = major = minor = 0;
+
+  if (XResQueryExtension (xdisplay, &event_base, &error_base) &&
+      XResQueryVersion (xdisplay, &major, &minor) == 1)
+    {
+      if (major > 1 || (major == 1 && minor >= 2))
+        self->have_xres = TRUE;
+    }
+#endif
+}
+
+static void
+wnck_handle_constructed (GObject *object)
+{
+  WnckHandle *self;
+
+  self = WNCK_HANDLE (object);
+
+  G_OBJECT_CLASS (wnck_handle_parent_class)->constructed (object);
+
+  init_xres (self);
 }
 
 static void
@@ -290,6 +338,7 @@ wnck_handle_class_init (WnckHandleClass *self_class)
 
   object_class = G_OBJECT_CLASS (self_class);
 
+  object_class->constructed = wnck_handle_constructed;
   object_class->finalize = wnck_handle_finalize;
   object_class->get_property = wnck_handle_get_property;
   object_class->set_property = wnck_handle_set_property;
@@ -341,6 +390,12 @@ WnckClientType
 _wnck_handle_get_client_type (WnckHandle *self)
 {
   return self->client_type;
+}
+
+gboolean
+_wnck_handle_has_xres (WnckHandle *self)
+{
+  return self->have_xres;
 }
 
 /**
@@ -563,6 +618,34 @@ _wnck_handle_remove_application (WnckHandle *self,
   g_hash_table_remove (self->app_hash, xwindow);
 }
 
+WnckApplication *
+_wnck_handle_get_application_from_res_class (WnckHandle *self,
+                                             const char *res_class)
+{
+  GHashTableIter iter;
+  gpointer value;
+
+  if (res_class == NULL || *res_class == '\0')
+    return NULL;
+
+  g_hash_table_iter_init (&iter, self->app_hash);
+  while (g_hash_table_iter_next (&iter, NULL, &value))
+    {
+      WnckApplication *app;
+      GList *windows;
+      const char *window_res_class;
+
+      app = WNCK_APPLICATION (value);
+
+      windows = wnck_application_get_windows (app);
+      window_res_class = wnck_window_get_class_group_name (windows->data);
+
+      if (g_strcmp0 (res_class, window_res_class) == 0)
+        return app;
+    }
+
+  return NULL;
+}
 
 /**
  * wnck_handle_get_application:

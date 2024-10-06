@@ -72,6 +72,7 @@ struct _WnckWindowPrivate
   WnckScreen *screen;
   WnckApplication *app;
   WnckClassGroup *class_group;
+  gboolean has_group_leader;
   Window group_leader;
   Window transient_for;
   int orig_event_mask;
@@ -504,13 +505,14 @@ _wnck_window_create (Window      xwindow,
   /* Default the group leader to the window itself; it is set in
    * update_wmhints() if a different group leader is specified.
    */
+  window->priv->has_group_leader = FALSE;
   window->priv->group_leader = window->priv->xwindow;
 
   window->priv->session_id =
     _wnck_get_session_id (xscreen, window->priv->xwindow);
 
   window->priv->pid =
-    _wnck_get_pid (xscreen, window->priv->xwindow);
+    _wnck_get_pid (screen, window->priv->xwindow);
 
   window->priv->x = 0;
   window->priv->y = 0;
@@ -765,6 +767,12 @@ wnck_window_get_group_leader (WnckWindow *window)
   g_return_val_if_fail (WNCK_IS_WINDOW (window), None);
 
   return window->priv->group_leader;
+}
+
+gboolean
+_wnck_window_get_has_group_leader (WnckWindow *window)
+{
+  return window->priv->has_group_leader;
 }
 
 /**
@@ -3188,7 +3196,10 @@ update_wmhints (WnckWindow *window)
                                            _wnck_atom_get ("WM_HINTS"));
 
       if (hints->flags & WindowGroupHint)
+        {
+          window->priv->group_leader = TRUE;
           window->priv->group_leader = hints->window_group;
+        }
 
       if (hints->flags & XUrgencyHint)
         {

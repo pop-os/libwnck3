@@ -1,6 +1,6 @@
 project('libwnck',
   'c',
-  version: '43.0',
+  version: '43.1',
   meson_version: '>= 0.50.0')
 
 LIBWNCK_SOVERSION = 0
@@ -45,7 +45,7 @@ pkg_deps = [
   {'name': 'gtk+-3.0', 'version': '>= 3.22.0' },
   {'name': STARTUP_NOTIFICATION_PACKAGE, 'version': '>= 0.4', 'required': get_option('startup_notification')},
   {'name': X11_PACKAGE },
-  {'name': XRES_PACKAGE, 'required': false},
+  {'name': XRES_PACKAGE, 'version': '>= 1.2', 'required': false},
 ]
 
 foreach p: pkg_deps
