@@ -97,6 +97,7 @@ libwnck-3.so.0 libwnck-3-0 #MINVER#
  wnck_shutdown@Base 3.4.0
  wnck_tasklist_get_scroll_enabled@Base 3.24.0
  wnck_tasklist_get_size_hint_list@Base 2.91.6
+ wnck_tasklist_get_tooltips_enabled@Base 43.1
  wnck_tasklist_get_type@Base 2.91.6
  wnck_tasklist_grouping_type_get_type@Base 2.91.6
  wnck_tasklist_new@Base 2.91.6
@@ -110,6 +111,7 @@ libwnck-3.so.0 libwnck-3-0 #MINVER#
  wnck_tasklist_set_orientation@Base 2.91.6
  wnck_tasklist_set_scroll_enabled@Base 3.24.0
  wnck_tasklist_set_switch_workspace_on_unminimize@Base 2.91.6
+ wnck_tasklist_set_tooltips_enabled@Base 43.1
  wnck_window_actions_get_type@Base 2.91.6
  wnck_window_activate@Base 2.91.6
  wnck_window_activate_transient@Base 2.91.6
