@@ -150,7 +150,7 @@ wnck_image_menu_item_set_label (GtkMenuItem *menu_item,
       g_free (item->label);
       item->label = g_strdup (label);
 
-      gtk_label_set_text_with_mnemonic (GTK_LABEL (item->accel_label), label);
+      gtk_label_set_text (GTK_LABEL (item->accel_label), label);
       g_object_notify (G_OBJECT (menu_item), "label");
     }
 }
@@ -196,7 +196,6 @@ wnck_image_menu_item_init (WnckImageMenuItem *item)
   accel_label = GTK_ACCEL_LABEL (item->accel_label);
   gtk_accel_label_set_accel_widget (accel_label, GTK_WIDGET (item));
   gtk_label_set_ellipsize (GTK_LABEL (accel_label), PANGO_ELLIPSIZE_END);
-  gtk_label_set_use_underline (GTK_LABEL (accel_label), TRUE);
 }
 
 GtkWidget *
@@ -237,4 +236,11 @@ void
 wnck_image_menu_item_make_label_normal (WnckImageMenuItem *item)
 {
   _make_gtk_label_normal (GTK_LABEL (item->accel_label));
+}
+
+void
+_wnck_image_menu_item_set_max_chars (WnckImageMenuItem *self,
+                                     int                n_chars)
+{
+  gtk_label_set_max_width_chars (GTK_LABEL (self->accel_label), n_chars);
 }

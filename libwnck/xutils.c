@@ -1145,21 +1145,26 @@ _wnck_get_session_id (Screen *screen,
                                            _wnck_atom_get ("SM_CLIENT_ID"));
 }
 
-int
-_wnck_get_pid (Screen *screen,
-               Window  xwindow)
+#ifdef HAVE_XRES
+static int
+xres_get_pid (WnckScreen *screen,
+              Window      xwindow)
 {
   int pid = -1;
-
-#ifdef HAVE_XRES
+  Screen *xscreen;
   XResClientIdSpec client_spec;
   long client_id_count = 0;
   XResClientIdValue *client_ids = NULL;
 
+  if (!_wnck_handle_has_xres (wnck_screen_get_handle (screen)))
+    return -1;
+
+  xscreen = _wnck_screen_get_xscreen (screen);
+
   client_spec.client = xwindow;
   client_spec.mask = XRES_CLIENT_ID_PID_MASK;
 
-  if (XResQueryClientIds (DisplayOfScreen (screen), 1, &client_spec,
+  if (XResQueryClientIds (DisplayOfScreen (xscreen), 1, &client_spec,
                           &client_id_count, &client_ids) == Success)
     {
       long i;
@@ -1172,13 +1177,27 @@ _wnck_get_pid (Screen *screen,
         }
 
       XResClientIdsDestroy (client_id_count, client_ids);
-
-      if (pid != -1)
-        return pid;
     }
+
+  return pid;
+}
 #endif
 
-  if (!_wnck_get_cardinal (screen, xwindow,
+int
+_wnck_get_pid (WnckScreen *screen,
+               Window      xwindow)
+{
+  int pid = -1;
+
+#ifdef HAVE_XRES
+  pid = xres_get_pid (screen, xwindow);
+
+  if (pid != -1)
+    return pid;
+#endif
+
+  if (!_wnck_get_cardinal (_wnck_screen_get_xscreen (screen),
+                           xwindow,
                            _wnck_atom_get ("_NET_WM_PID"),
                            &pid))
     return 0;

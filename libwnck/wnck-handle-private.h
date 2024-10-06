@@ -26,6 +26,8 @@ G_BEGIN_DECLS
 
 WnckClientType   _wnck_handle_get_client_type            (WnckHandle     *self);
 
+gboolean         _wnck_handle_has_xres                   (WnckHandle     *self);
+
 gsize            _wnck_handle_get_default_icon_size      (WnckHandle     *self);
 
 gsize            _wnck_handle_get_default_mini_icon_size (WnckHandle     *self);
@@ -43,6 +45,9 @@ void             _wnck_handle_insert_application         (WnckHandle      *self,
 
 void             _wnck_handle_remove_application         (WnckHandle      *self,
                                                           gpointer         xwindow);
+
+WnckApplication *_wnck_handle_get_application_from_res_class (WnckHandle  *self,
+                                                              const char  *res_class);
 
 void             _wnck_handle_insert_window              (WnckHandle      *self,
                                                           gpointer         xwindow,
