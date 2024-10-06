@@ -17,7 +17,7 @@ Build-Depends: debhelper-compat (= 13),
                libstartup-notification0-dev (>= 0.7),
                libx11-dev,
                libxext-dev,
-               libxres-dev,
+               libxres-dev (>= 2:1.2),
                meson (>= 0.50.0)
 Standards-Version: 4.6.1
 Vcs-Browser: https://salsa.debian.org/gnome-team/libwnck3
