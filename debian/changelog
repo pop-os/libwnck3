@@ -1,6 +1,8 @@
-libwnck3 (43.2-1) UNRELEASED; urgency=medium
+libwnck3 (43.2-1) unstable; urgency=medium
 
   * New upstream release.
+  * Build-depend on libxi-dev, per upstream meson.build change.
+  * Use gir:Depends and gir:Provides substitution variables for libwnck-3-dev.
 
  -- Dmitry Shachnev <mitya57@debian.org>  Mon, 03 Feb 2025 15:23:30 +0300
 
