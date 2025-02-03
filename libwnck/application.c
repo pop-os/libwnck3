@@ -58,8 +58,6 @@ struct _WnckApplicationPrivate
   int pid;
   char *name;
 
-  int orig_event_mask;
-
   WnckWindow *name_window;    /* window we are using name of */
 
   GdkPixbuf *icon;
@@ -145,11 +143,6 @@ wnck_application_finalize (GObject *object)
   WnckApplication *application;
 
   application = WNCK_APPLICATION (object);
-
-  _wnck_select_input (WNCK_SCREEN_XSCREEN (application->priv->screen),
-                      application->priv->xwindow,
-                      application->priv->orig_event_mask,
-                      FALSE);
 
   application->priv->xwindow = None;
 
@@ -542,10 +535,10 @@ _wnck_application_create (Window      xwindow,
   /* Note that xwindow may correspond to a WnckWindow's xwindow,
    * so we select events needed by either
    */
-  application->priv->orig_event_mask = _wnck_select_input (xscreen,
-                                                           application->priv->xwindow,
-                                                           WNCK_APP_WINDOW_EVENT_MASK,
-                                                           TRUE);
+  _wnck_select_input (xscreen,
+                      application->priv->xwindow,
+                      WNCK_APP_WINDOW_EVENT_MASK,
+                      TRUE);
 
   return application;
 }
@@ -652,7 +645,7 @@ _wnck_application_process_property_notify (WnckApplication *app,
   else if (xevent->xproperty.atom ==
            _wnck_atom_get ("_NET_WM_ICON") ||
            xevent->xproperty.atom ==
-           _wnck_atom_get ("WM_NORMAL_HINTS"))
+           _wnck_atom_get ("WM_HINTS"))
     {
       _wnck_icon_cache_property_changed (app->priv->icon_cache,
                                          xevent->xproperty.atom);
