@@ -17,6 +17,7 @@ Build-Depends: debhelper-compat (= 13),
                libstartup-notification0-dev (>= 0.7),
                libx11-dev,
                libxext-dev,
+               libxi-dev,
                libxres-dev (>= 2:1.2),
                meson (>= 0.50.0)
 Standards-Version: 4.7.0
