@@ -1,4 +1,4 @@
-libwnck3 (43.3-1) UNRELEASED; urgency=medium
+libwnck3 (43.3-1) unstable; urgency=medium
 
   [ Simon McVittie ]
   * d/control: Build-Depend on required gir1.2-*-dev packages
@@ -9,7 +9,7 @@ libwnck3 (43.3-1) UNRELEASED; urgency=medium
   [ Dmitry Shachnev ]
   * New upstream release.
 
- -- Simon McVittie <smcv@debian.org>  Tue, 02 Sep 2025 23:55:43 +0100
+ -- Dmitry Shachnev <mitya57@debian.org>  Sat, 06 Sep 2025 23:48:47 +0300
 
 libwnck3 (43.2-1) unstable; urgency=medium
 
