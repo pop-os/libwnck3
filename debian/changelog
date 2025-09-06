@@ -1,9 +1,13 @@
-libwnck3 (43.2-2) UNRELEASED; urgency=medium
+libwnck3 (43.3-1) UNRELEASED; urgency=medium
 
+  [ Simon McVittie ]
   * d/control: Build-Depend on required gir1.2-*-dev packages
   * d/control: Replace libgirepository1.0-dev B-D with
     gobject-introspection
   * d/control: Standards-Version: 4.7.2 (no changes required)
+
+  [ Dmitry Shachnev ]
+  * New upstream release.
 
  -- Simon McVittie <smcv@debian.org>  Tue, 02 Sep 2025 23:55:43 +0100
 
