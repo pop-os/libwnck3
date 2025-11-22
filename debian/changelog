@@ -1,3 +1,9 @@
+libwnck3 (43.3-1pop1) noble; urgency=medium
+
+  * Pop packaging
+
+ -- Ian Douglas Scott <idscott@system76.com>  Fri, 21 Nov 2025 16:55:01 -0800
+
 libwnck3 (43.3-1) unstable; urgency=medium
 
   [ Simon McVittie ]
